@@ -1,0 +1,6 @@
+<view class='product-list'>
+  <view class='img-group' wx:for="{{productList}}" wx:key="{{item._id}}" data-id="{{item._id}}" bindtap='goDetail'>
+    <image src="{{imgUrl + item.logo}}"></image>
+    <text>{{item.title}}</text>
+  </view>
+</view>

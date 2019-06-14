@@ -1,0 +1,2 @@
+<textarea class="content" placeholder="请在此处输入投诉及建议~" maxlength='1000'></textarea>
+<button class='submit'>确认</button>

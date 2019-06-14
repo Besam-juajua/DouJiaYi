@@ -1,0 +1,67 @@
+<view>
+  <swiper>
+    <swiper-item wx:for="{{info.pics}}" wx:key="{{info.pics}}">
+      <image src='{{imgUrl + item}}'></image>
+    </swiper-item>
+  </swiper>
+  <view class='profile'>
+    <view class='left-title'>
+      <text class='title'>{{info.title}}</text>
+      <text class='money'>¥{{info.price}}</text>
+      <text class='has-sold'>已售 {{info.sold}} 件</text>
+      <view class='specs' bindtap='showSpecs'>
+        <text>规格</text>
+        <text>{{specsName || "请选择"}}</text>
+        <image src='/images/right_gray.png'></image>
+      </view>
+    </view>
+    <button class='fav-img' open-type='share'>
+      <image src='/images/share.png'></image>
+      <text class="{{like? 'active' : ''}}">分享</text>
+    </button>
+  </view>
+</view>
+<!-- 规格弹窗 -->
+<view class='alert-box' wx:if="{{showBox}}" bindtap='hideSpecs'>
+  <view class='specs-box' catchtap='noneOperation'>
+    <view class='specs-profile'>
+      <image src='{{imgUrl + info.logo}}'></image>
+      <view class='specs-name'>
+        <text>{{info.title}}</text>
+        <text>¥ {{(price||info.price) * count}}</text>
+        <text>库存: {{info.stock}}件</text>
+      </view>
+    </view>
+    <view class='specs-select'>
+      <text>规格</text>
+      <view class='specs-list'>
+        <text wx:for="{{info.specs}}" wx:key="{{item._id}}" class="{{specsName==item.name? 'active' : '' }}" data-name="{{item.name}}" data-price="{{item.price}}" data-startnum="{{item.start_num}}" data-endnum="{{item.end_num}}" bindtap='getSpecs'>{{item.name}}</text>
+      </view>
+    </view>
+    <view class='specs-count'>
+      <text>数量</text>
+      <view class='count'>
+        <view class='alter' catchtap='subCount'>
+          <image src='/images/sub.png' style='width:24rpx; height: 2rpx; margin: 0 10rpx;'></image>
+        </view>
+        <text>{{count}}</text>
+        <view class='alter' catchtap='addCount'>
+          <image src='/images/add.png' style=' width:24rpx; height: 24rpx; margin: 0 10rpx;'></image>
+        </view>
+      </view>
+    </view>
+    <button class="confirm-specs" bindtap='hideSpecs'>确定</button>
+  </view>
+</view>
+
+<view style='margin-top: 20rpx; background: white;'>
+  <template is="wxParse" data="{{wxParseData:productDetail.nodes}}" />
+</view>
+<import src="../../wxParse/wxParse.wxml" />
+<!-- 合计 -->
+<view class='amount'>
+  <text class='total'>合计：</text>
+  <text class='money'>￥{{price * count}}</text>
+  <text class='pay' bindtap='addGoods'>立即添加</text>
+  <text class='pay-count'>数量：{{count}}个</text>
+</view>

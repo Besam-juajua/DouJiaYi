@@ -1,0 +1,69 @@
+page {
+  background: #F5F5F5;
+}
+
+.notice-item {
+  margin-bottom: 20rpx;
+  background: white;
+}
+
+.notice-item .title {
+  display: block;
+  padding: 0 20rpx;
+  line-height: 90rpx;
+  border-bottom: 1px solid #F5F5F5;
+  font-weight: bold;
+  font-size: 34rpx;
+  color: #222222;
+}
+
+.notice-item .content {
+  padding: 20rpx 30rpx;
+  border-bottom: 1px solid #F5F5F5;
+  font-size: 30rpx;
+  color: #444444;
+}
+
+.notice-item .date-spread {
+  display: flex;
+  align-items: center;
+  height: 76rpx;
+  padding: 0 20rpx;
+  position: relative;
+}
+
+.date-spread .date {
+  font-size: 22rpx;
+  color: #999999;
+}
+
+.date-spread .spread {
+  position: absolute;
+  right: 20rpx;
+  font-size: 26rpx;
+  color: #F32939;
+}
+
+.date-spread image {
+  margin-right: 8rpx;
+  width: 24rpx;
+  height: 20rpx;
+}
+
+.not-notice {
+  margin-top: 160rpx;
+}
+
+.not-notice image {
+  display: block;
+  width: 250rpx;
+  height: 198rpx;
+  margin: 0 auto 30rpx; 
+}
+
+.not-notice text {
+  display: block;
+  text-align: center;
+  font-size: 26rpx;
+  color: #999999;
+}

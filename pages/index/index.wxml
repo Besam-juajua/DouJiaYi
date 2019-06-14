@@ -1,0 +1,82 @@
+<view>
+  <swiper>
+    <swiper-item wx:for="{{advertises}}" wx:key="{{item.path}}">
+      <image src='{{imgUrl + item.path}}'></image>
+    </swiper-item>
+  </swiper>
+  <!-- 三个功能 -->
+  <view class='function'>
+    <view class='function-item' bindtap='goProduct'>
+      <image src='/images/product_function.png'></image>
+      <text>产品册</text>
+    </view>
+    <view class='function-item' bindtap='goPurchase'>
+      <image src='/images/order_function.png'></image>
+      <text>下单</text>
+    </view>
+    <view class='function-item' bindtap='goNotice'>
+      <image src='/images/notice_function.png'></image>
+      <text>通告/公告</text>
+    </view>
+  </view>
+  <!-- 产品册 -->
+  <view class='product-show'>
+    <view class='top-title'>
+      <view class='text-title'>
+        <text>产品册</text>
+        <text>Product picture</text>
+      </view>
+      <image src='/images/feature_title.png'></image>
+    </view>
+    <view class="group group-one left">
+      <image src='{{imgUrl + goods[0].logo}}'></image>
+      <text>{{goods[0].title}}</text>
+    </view>
+    <view class="group group-two right">
+      <view class='min-img'>
+        <image src='{{imgUrl + goods[1].logo}}'></image>
+        <text>{{goods[1].title}}</text>
+      </view>
+      <view class='min-img'>
+        <image src='{{imgUrl + goods[2].logo}}'></image>
+        <text>{{goods[2].title}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- 关于豆加壹 -->
+  <view class='about-doujiayi'>
+    <view class='about-title'>
+      <text>关于豆加壹</text>
+      <text>About us</text>
+    </view>
+    <image src='/images/about_banner.png'></image>
+  </view>
+  <!-- 客户必读 -->
+  <view class='need-read'>
+    <text class='read-title'>客户必读</text>
+    <view class='read-list'>
+      <view class='read-item'>
+        <view class='black-dot'></view>
+        <view class='item-content'>
+          <text>上午下单，下午配送</text>
+          <text>下午下单，第二天上午配送。</text>
+        </view>
+      </view>
+      <view class='read-item'>
+        <view class='black-dot'></view>
+        <view class='item-content'>
+          <text>我们是根据客户地址设置最佳配送路线，加急订单请提前下定单，避免造成不必要的麻烦。</text>
+        </view>
+      </view>
+      <view class='read-item'>
+        <view class='black-dot'></view>
+        <view class='item-content'>
+          <text>收到货物之后，请检查及清点货物数量，签收单据！</text>
+          <text>如有疑问，请第一时间联系客服反馈。</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 提示 -->
+  <view class='tips'>提示:为避免遗忘下单，本系统已开启微信公众号自动循环下单提醒，如需修改请进入个人中心或咨询客服!</view>
+</view>

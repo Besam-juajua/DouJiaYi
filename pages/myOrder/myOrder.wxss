@@ -1,0 +1,162 @@
+page {
+  background: #F5F5F5;
+}
+
+.top-nav {
+  display: flex;
+  height: 60rpx;
+  /* align-items: center; */
+  background: white;
+}
+
+.nav-item {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-item text {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  font-size: 26rpx;
+  color: #333333;
+  box-sizing: border-box;
+}
+
+.nav-item.active text {
+  color: #F32939;
+  border-bottom: 4rpx solid #F32939;
+}
+
+.order-list {
+
+}
+
+.order-item {
+  margin: 20rpx;
+  background: white;
+  border-radius: 16rpx;
+}
+
+.order-item .order-num {
+  padding: 0 20rpx;
+  line-height: 60rpx;
+  border-bottom: 2rpx solid #F5F5F5;
+}
+
+.order-num text:nth-of-type(1) {
+  font-size: 22rpx;
+  color: #999999;
+}
+
+.order-num text:nth-of-type(2) {
+  float: right;
+  font-size: 26rpx;
+  color: #F32939;
+}
+
+.product {
+  height: 180rpx;
+  border-bottom: 2rpx solid #F5F5F5;
+  overflow: hidden;
+  position: relative;
+}
+
+.product image {
+  float: left;
+  width: 140rpx;
+  height: 140rpx;
+  margin: 20rpx;
+  border-radius: 8rpx;
+}
+
+.product .product-specs {
+  float: left;
+  width: calc(100% - 200rpx);
+  padding: 20rpx 0;
+}
+
+.product-specs text {
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  word-break: break-all;
+}
+
+.product-specs text:nth-of-type(1) {
+  line-height: 50rpx;
+  font-size: 28rpx;
+  color: #222222;
+}
+
+.product-specs text:nth-of-type(2) {
+  font-size: 22rpx;
+  color: #666666;
+}
+
+.product-specs text:nth-of-type(3) {
+  margin-top: 14rpx;
+  font-size: 26rpx;
+  color: #222222;
+}
+
+.product .money {
+  display: block;
+  position: absolute;
+  right: 20rpx;
+  bottom: 26rpx;
+  font-size: 30rpx;
+  color: #222222;
+}
+
+.btn-group {
+  line-height: 60rpx;
+  padding: 0 20rpx;
+}
+
+.btn-group text {
+  font-size: 22rpx;
+  color: #999999;
+}
+
+.btn-group button {
+  float: right;
+  height: 36rpx;
+  line-height: 36rpx;
+  padding: 0 16rpx;
+  margin-top: 14rpx;
+  margin-left: 10rpx;
+  background: none;
+  border: 1rpx solid #444444;
+  border-radius: 18rpx;
+  font-size: 22rpx;
+  color: #444444;
+}
+
+.btn-group button.active {
+  color: #F32939;
+  border-color: #F32939;
+}
+
+.not-order {
+  margin-top: 100rpx;
+}
+
+.not-order image {
+  display: block;
+  width: 250rpx;
+  height: 198rpx;
+  margin: 0 auto;
+}
+
+.not-order text {
+  display: block;
+  margin-top: 34rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color: #999999;
+}

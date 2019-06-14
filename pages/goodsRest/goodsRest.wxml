@@ -1,0 +1,11 @@
+<view class="goods-list">
+  <view class='goods-item' wx:for="{{goodsList}}" wx:key="{{item.title}}">
+    <image src='{{item.thumb}}'></image>
+    <view class='goods-content'>
+      <text>{{item.title}}</text>
+      <text>库存时间：{{item.restDate}}</text>
+      <text>过期时间：{{item.expire}}</text>
+      <text>数量：{{item.restNum}}</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,12 @@
+<view class='login-box'>
+  <image src='/images/logo.png' class='logo'></image>
+  <view class='input-group'>
+    <image src='/images/phone.png' style='width: 38rpx; height: 48rpx; margin-right: 22rpx;'></image>
+    <input placeholder='请输入账号' value='{{user}}' bindinput='inputUser'></input>
+  </view>
+  <view class='input-group'>
+    <image src='/images/lock.png' style='width: 38rpx; height: 45rpx; margin-right: 22rpx;'></image>
+    <input type='password' placeholder='请输入密码' value='{{pwd}}' bindinput="inputPwd"></input>
+  </view>
+  <button class='login-btn' bindtap='postLogin'>登录</button>
+</view>

@@ -1,0 +1,19 @@
+<view class='notice-list'>
+  <view class='notice-item' wx:for="{{noticeList}}" wx:key="{{item.title}}">
+    <text class='title'>{{item.title}}</text>
+    <view class='content'>{{item.content}}</view>
+    <view class='date-spread'>
+      <text class='date'>{{item.date}}</text>
+      <view class='spread'>
+        <image src="/images/spread.png"></image>
+        <text>展开全部</text>
+      </view>
+
+    </view>
+  </view>
+</view>
+
+<view class='not-notice' wx:if="{{noticeList.length == 0}}">
+  <image src='/images/not_notice.png'></image>
+  <text>暂无公告~</text>
+</view>

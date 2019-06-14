@@ -1,0 +1,4 @@
+<view class='top-banner'>
+  <text class='title'>豆加壹简介</text>
+</view>
+<text class='about-content'>{{content}}</text>

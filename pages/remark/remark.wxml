@@ -1,0 +1,25 @@
+<view class='product'>
+  <image src='/images/test.png'></image>
+  <view class='product-specs'>
+    <text>豆加壹45g黄糖笑包</text>
+    <text>规格：45g*12个</text>
+    <text>x2</text>
+  </view>
+  <text class='money'>￥4.20</text>
+</view>
+
+<view class='remark'>
+  <text class='title'>评分</text>
+  <view class='img-group'>
+    <image src="{{starNum==1? '/images/middle_star.png' : starNum>1? '/images/good_star.png' : '/images/bad_star.png'}}"></image>
+    <image src="{{starNum==3? '/images/middle_star.png' : starNum>3? '/images/good_star.png' : '/images/bad_star.png'}}"></image>
+    <image src="{{starNum==5? '/images/middle_star.png' : starNum>5? '/images/good_star.png' : '/images/bad_star.png'}}"></image>
+    <image src="{{starNum==7? '/images/middle_star.png' : starNum>7? '/images/good_star.png' : '/images/bad_star.png'}}"></image>
+    <image src="{{starNum==9? '/images/middle_star.png' : starNum>9? '/images/good_star.png' : '/images/bad_star.png'}}"></image>
+    <text>3.5</text>
+  </view>
+  <textarea placeholder='请在此处输入您的评价~' maxlength='300'></textarea>
+  <image src='/images/image.png' class='image'></image>
+</view>
+
+<button class='submit'>提交</button>

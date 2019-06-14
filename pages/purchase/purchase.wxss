@@ -1,0 +1,152 @@
+page {
+  width: 100%;
+  height: 100%;
+  padding-bottom: 80rpx;
+  box-sizing: border-box;
+}
+
+.left-nav {
+  float: left;
+  width: 140rpx;
+  height: 100%;
+  background: #F5F5F5;
+}
+
+.left-nav text {
+  display: block;
+  width: 100%;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #666666;
+}
+
+.left-nav text.active {
+  background: white;
+}
+
+.right-content {
+  float: right;
+  width: calc(100% - 140rpx);
+  height: 100%;
+  overflow: scroll;
+  background: white;
+}
+
+.product-list {
+  display: flex;
+  align-items: center;
+  height: 240rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  border-bottom: 1px solid #F5F5F5;
+  position: relative;
+}
+
+.product-list .title-img {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 8rpx;
+}
+
+.product-list .product-specs {
+  padding: 20rpx;
+  box-sizing: border-box;
+  width: calc(100% - 200rpx);
+  height: 100%;
+  position: relative;
+}
+
+.product-specs text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.product-specs text:nth-of-type(1) {
+  display: block;
+  line-height: 60rpx;
+  font-size: 30rpx;
+  color: #222222;
+}
+
+.product-specs text:nth-of-type(2) {
+  display: block;
+  font-size: 22rpx;
+  color: #666666;
+}
+
+.product-specs text:nth-of-type(3) {
+  display: block;
+  position: absolute;
+  bottom: 30rpx;
+  font-size: 30rpx;
+  color: #C41D17;
+}
+
+
+.count {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 20rpx;
+  bottom: 30rpx;
+  box-sizing: border-box;
+  border: 2rpx solid #D8D8D8;
+  border-radius: 2rpx;
+  overflow: hidden;
+}
+
+.count .alter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46rpx;
+  height: 40rpx;
+}
+
+.count text {
+  padding: 0 24rpx;
+  line-height: 40rpx;
+  font-size: 26rpx;
+  color: #222222;
+  border-left: 2rpx solid #D8D8D8;
+  border-right: 2rpx solid #D8D8D8;
+}
+
+.amount {
+  position: fixed;
+  bottom: 0;
+  padding-left: 20rpx;
+  width: 100%;
+  line-height: 78rpx;
+  font-size: 26rpx;
+  background: white;
+}
+
+.amount .total {
+  color: #222222;
+}
+
+.amount .money {
+  font-weight: bold;
+  color: #F32939;
+}
+
+.amount .pay {
+  display: block;
+  float: right;
+  width: 200rpx;
+  height: 100%;
+  background: #F32939;
+  text-align: center;
+  font-size: 30rpx;
+  color: white;
+}
+
+.amount .pay-count {
+  display: block;
+  float: right;
+  padding: 0 20rpx;
+  color: #666666;
+}

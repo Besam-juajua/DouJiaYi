@@ -1,0 +1,161 @@
+page {
+  background: #F5F5F5;
+}
+
+.order {
+  background: white;
+}
+
+.order .store-name {
+  display: block;
+  line-height: 78rpx;
+  padding: 0 20rpx;
+  border-bottom: 1px solid #F5F5F5;
+  font-weight: bold;
+  font-size: 26rpx;
+  color: #282828;
+}
+
+.product-list {
+  padding: 0 20rpx;
+}
+
+.product-item {
+  display: flex;
+  align-items: center;
+  height: 128rpx;
+  border-bottom: 2rpx solid #F5F5F5;
+}
+
+.product-item image {
+  width: 88rpx;
+  height: 88rpx;
+  margin: 20rpx 20rpx 20rpx 0;
+  border-radius: 8rpx;
+}
+
+.product-item .profile {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.profile .name-specs {
+  margin-right: 40rpx;
+  max-width: 400rpx;
+}
+
+.name-specs text {
+  display: block;
+  color: #222222;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  word-break: break-all;
+}
+
+.name-specs .name {
+  margin-bottom: 10rpx;
+  font-size: 26rpx;
+}
+
+.name-specs .specs {
+  font-size: 22rpx;
+}
+
+.profile .count {
+  font-size: 26rpx;
+  color: #222222;
+}
+
+.product-item .money {
+  display: block;
+  max-width: 110rpx;
+  margin-left: 20rpx;
+  font-size: 30rpx;
+  color: #222222;
+}
+
+.calc-money {
+  padding: 0 20rpx;
+  line-height: 80rpx;
+  font-size: 26rpx;
+  color: #666666;
+}
+
+.calc-money text:nth-of-type(2) {
+  float: right;
+  font-weight: bold;
+  color: #F32939;
+}
+
+.calc-money text:nth-of-type(3) {
+  float: right;
+  color: #222222;
+}
+
+ /*订单信息 */
+.order-message {
+  margin-top: 20rpx;
+  background: white;
+}
+
+.order-message .top-title {
+  display: block;
+  padding-left: 20rpx;
+  line-height: 78rpx;
+  font-weight: bold;
+  font-size: 26rpx;
+  color: #282828;
+  border-bottom: 1rpx solid #F5F5F5;
+}
+
+.order-message .person {
+  padding: 22rpx 20rpx;
+  border-bottom: 1rpx solid #F5F5F5;
+}
+
+.person .adress text:nth-of-type(1) {
+  display: block;
+  float: left;
+  font-size: 26rpx;
+  color: #222222;
+}
+
+.person .adress text:nth-of-type(2) {
+  display: block;
+  float: right;
+  font-size: 22rpx;
+  color: #666666;
+}
+
+.person .adress:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.person .name {
+  display: block;
+  text-align: right;
+  font-size: 22rpx;
+  color: #666666;
+}
+
+.others {
+  padding: 0 20rpx;
+  line-height: 76rpx;
+  border-bottom: 1px solid #F5F5F5;
+}
+
+.others text:nth-of-type(1) {
+  font-size: 26rpx;
+  color: #222222;
+}
+
+.others text:nth-of-type(2) {
+  float: right;
+  font-size: 22rpx;
+  color: #666666;
+}

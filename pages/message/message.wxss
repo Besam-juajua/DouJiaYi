@@ -1,0 +1,83 @@
+page {
+  background: #F5F5F5;
+}
+
+.message-item {
+  margin-bottom: 20rpx;
+  background: white;
+}
+
+.message-item .message-title {
+  padding: 0 30rpx;
+  line-height: 90rpx;
+  font-size: 30rpx;
+  color: #222222;
+  border-bottom: 1px solid #F5F5F5;
+  position: relative;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  word-break: break-all;
+}
+
+.message-title .red-dot {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 100%;
+  background: #F32939;
+}
+
+.message-content {
+  display: flex;
+}
+
+.message-content image {
+  width: 140rpx;
+  height: 140rpx;
+  margin: 30rpx;
+  border-radius: 10rpx;
+}
+
+.message-content .text-content {
+  flex: 1;
+  padding: 30rpx 0;
+  padding-right: 30rpx;
+  overflow: hidden;
+  color: #7B7B7B;
+  position: relative;
+}
+
+.text-content text:nth-of-type(1) {
+  display: block;
+  line-height: 40rpx;
+  font-size: 30rpx;
+}
+
+.text-content text:nth-of-type(2) {
+  position: absolute;
+  right: 30rpx;
+  bottom: 26rpx;
+  font-size: 22rpx;
+}
+
+.not-message {
+  margin-top: 100rpx;
+}
+
+.not-message image {
+  display: block;
+  width: 250rpx;
+  height: 198rpx;
+  margin: 0 auto;
+}
+
+.not-message text {
+  display: block;
+  margin-top: 34rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color: #999999;
+}

@@ -1,0 +1,6 @@
+<view class="help-list">
+  <view class='help-item' wx:for="{{helpList}}" wx:key="{{item.title}}">
+    <text>{{item.title}}</text>
+    <text>{{item.content}}</text>
+  </view>
+</view>

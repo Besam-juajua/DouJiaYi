@@ -1,0 +1,22 @@
+page {
+  background: #F5F5F5;
+}
+
+.help-item {
+  padding: 30rpx 20rpx;
+  margin-bottom: 2rpx;
+  background: white;
+}
+
+.help-item text:nth-of-type(1) {
+  display: block;
+  font-size: 26rpx;
+  color: #F32939;
+}
+
+.help-item text:nth-of-type(2) {
+  display: block;
+  margin-top: 16rpx;
+  font-size: 26rpx;
+  color: #222222;
+}

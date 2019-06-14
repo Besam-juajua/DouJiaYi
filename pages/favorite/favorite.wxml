@@ -1,0 +1,17 @@
+<view class='order-list'>
+  <view class='order-item' wx:for="{{orderList}}" wx:key="{{item.thumb}}">
+    <image src='{{item.thumb}}' class='title-img'></image>
+    <view class='order-specs'>
+      <text>{{item.title}}</text>
+      <text>规格：{{item.specs}}</text>
+      <text>¥ {{item.price}}</text>
+    </view>
+    <button class='cancel-btn'>取消收藏</button>
+  </view>
+</view>
+
+
+<view class='not-favorite' wx:if="{{orderList.length == 0}}">
+  <image src='/images/not_favorite.png'></image>
+  <text>暂无收藏~</text>
+</view>

@@ -1,0 +1,26 @@
+<view class='order-list'>
+  <view class='order-item' wx:for="{{orderList}}" wx:key="{{item._id}}" data-id="{{item._id}}" data-label="{{item.label}}" bindtap='goDetail'>
+    <image src='{{imgUrl + item.logo}}' class='title-img'></image>
+    <view class='order-specs'>
+      <text>{{item.title}}</text>
+      <text>规格：{{item.remark}}</text>
+      <text>¥ {{item.price}}</text>
+    </view>
+    <view class='count'>
+      <view class='alter' catchtap='subCount' data-index="{{index}}">
+        <image src='/images/sub.png' style='width:24rpx; height: 2rpx; margin: 0 10rpx;'></image>
+      </view>
+      <text>{{item.count}}</text>
+      <view class='alter' catchtap='addCount' data-index="{{index}}">
+        <image src='/images/add.png' style=' width:24rpx; height: 24rpx; margin: 0 10rpx;'></image>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class='amount'>
+  <text class='total'>合计：</text>
+  <text class='money'>￥12.60</text>
+  <text class='pay'>结算</text>
+  <text class='pay-count'>数量：8个</text>
+</view>

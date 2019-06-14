@@ -1,0 +1,42 @@
+<view class="top-nav">
+  <view class="nav-item {{currentNav==0? 'active' : ''}}" data-nav="0" bindtap='switchNav'>
+    <text>待付款</text>
+  </view>
+  <view class="nav-item {{currentNav==1? 'active' : ''}}" data-nav="1" bindtap='switchNav'>
+    <text>待收获</text>
+  </view>
+  <view class="nav-item {{currentNav==2? 'active' : ''}}" data-nav="2" bindtap='switchNav'>
+    <text>待评价</text>
+  </view>
+  <view class="nav-item {{currentNav==3? 'active' : ''}}" data-nav="3" bindtap='switchNav'>
+    <text>退款中</text>
+  </view>
+</view>
+
+<view class='order-list' wx:for="{{orderList}}" wx:key="{{item.orderNum}}" bindtap='goProduct'>
+  <view class='order-item'>
+    <view class='order-num'>
+      <text>订单号：{{item.orderNum}}</text>
+      <text>{{currentNav==0? "待付款" : currentNav==1? "待收货" : currentNav==2? "待评价" : "退款中"}}</text>
+    </view>
+    <view class='product' wx:for="{{item.products}}" wx:key="{{item.title}}">
+      <image src='{{item.thumb}}'></image>
+      <view class='product-specs'>
+        <text>{{item.title}}</text>
+        <text>规格：{{item.specs}}</text>
+        <text>x{{item.count}}</text>
+      </view>
+      <text class='money'>￥{{item.price}}</text>
+    </view>
+    <view class='btn-group' catchtap='goRemark'>
+      <text>下单时间：{{item.date}}</text>
+      <button class='active' wx:if="{{currentNav!=3}}">{{currentNav==0? "待付款" : currentNav==1? "确认收货" : currentNav==2? "去评价" : ""}}</button>
+      <button wx:if="{{currentNav==0}}">取消订单</button>
+    </view>
+  </view>
+</view>
+
+<view class='not-order' wx:if="{{orderList.length == 0}}">
+  <image src='/images/not_data.png'></image>
+  <text>暂无订单历史~</text>
+</view>

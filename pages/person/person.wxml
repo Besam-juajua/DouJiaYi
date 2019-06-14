@@ -1,0 +1,80 @@
+<view class='top-container'>
+  <view class='profile'>
+    <image src='{{userinfo.headicon? imgUrl+userinfo.headicon : "/images/test.png" }}'></image>
+    <view class='profile-text'>
+      <text>{{userinfo.username}}</text>
+      <text>{{userinfo.mobile}}</text>
+    </view>
+  </view>
+</view>
+
+<view class='my-order'>
+  <view class='preview'>
+    <text>我的订单</text>
+    <text bindtap='goMyOrder'>查看全部</text>
+  </view>
+  <view class='order-type'>
+    <view class='type-item' data-type="0" bindtap='goMyOrder'>
+      <image src='/images/will_pay.png' style='width: 46rpx; height: 46rpx;'></image>
+      <text>待付款</text>
+    </view>
+    <view class='type-item' data-type="1" bindtap='goMyOrder'>
+      <image src='/images/will_goods.png' style='width: 44rpx; height: 44rpx;'></image>
+      <text>待收货</text>
+    </view>
+    <view class='type-item' data-type="2" bindtap='goMyOrder'>
+      <image src='/images/will_appraise.png' style='width: 48rpx; height: 44rpx;'></image>
+      <text>待评价</text>
+    </view>
+    <view class='type-item' data-type="3" bindtap='goMyOrder'>
+      <image src='/images/refund.png' style='width: 44rpx; height: 44rpx;'></image>
+      <text>退款中</text>
+    </view>
+  </view>
+</view>
+
+<view class='information'>
+  <view class='information-item' bindtap='goMessage'>
+    <image src='/images/message.png'></image>
+    <text>我的消息</text>
+    <image src='/images/right_gray.png'></image>
+  </view>
+  <view class='information-item' bindtap='goFavorite'>
+    <image src='/images/favorite.png'></image>
+    <text>我的收藏</text>
+    <image src='/images/right_gray.png'></image>
+  </view>
+  <view class='information-item' bindtap='goAdress'>
+    <image src='/images/location.png' style='width: 30rpx; height: 39rpx;'></image>
+    <text>收货地址</text>
+    <image src='/images/right_gray.png'></image>
+  </view>
+  <view class='information-item' bindtap='goGoodsRest'>
+    <image src='/images/product_rest.png' style='width: 30rpx; height: 35rpx;'></image>
+    <text>商品库存</text>
+    <image src='/images/right_gray.png'></image>
+  </view>
+</view>
+
+<view class='information'>
+  <view class='information-item' bindtap='goHelp'>
+    <image src='/images/question.png' style='width: 32rpx; height: 35rpx;'></image>
+    <text>帮助中心</text>
+    <image src='/images/right_gray.png'></image>
+  </view>
+  <view class='information-item' bindtap='goAbout'>
+    <image src='/images/about_us.png'></image>
+    <text>关于我们</text>
+    <image src='/images/right_gray.png'></image>
+  </view>
+  <view class='information-item' bindtap='goFeedback'>
+    <image src='/images/warn.png' style='width: 32rpx; height: 35rpx;'></image>
+    <text>投诉与建议</text>
+    <image src='/images/right_gray.png'></image>
+  </view>
+  <view class='information-item'>
+    <image src='/images/call.png'></image>
+    <text>服务热线:<text id='phone'> 400-548952</text></text>
+    <image src='/images/right_gray.png'></image>
+  </view>
+</view>

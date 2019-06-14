@@ -1,0 +1,56 @@
+page {
+  background: #F5F5F5;
+}
+
+.goods-list {
+  padding: 0 20rpx;
+  background: white;
+}
+
+.goods-item {
+  display: flex;
+  height: 160rpx;
+  border-bottom: 1px solid #F5F5F5;
+}
+
+.goods-item image {
+  width: 120rpx;
+  height: 120rpx;
+  margin: 20rpx 20rpx 20rpx 0;
+  border-radius: 8rpx;
+}
+
+.goods-item .goods-content {
+  flex: 1;
+  padding: 20rpx 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.goods-content text {
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  word-break: break-all;
+}
+
+.goods-content text:nth-of-type(1) {
+  margin-bottom: 14rpx;
+  font-size: 30rpx;
+  color: #222222;
+}
+
+.goods-content text:nth-of-type(2),
+.goods-content text:nth-of-type(3) {
+  font-size: 20rpx;
+  color: #666666;
+}
+
+.goods-content text:nth-of-type(4) {
+  position: absolute;
+  right: 0;
+  bottom: 22rpx;
+  font-size: 20rpx;
+  color: #666666;
+}

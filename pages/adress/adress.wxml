@@ -1,0 +1,16 @@
+<view class="adress-list">
+  <view class='adress-item' wx:for="{{adressList}}" wx:key="{{item.name}}">
+    <view class='profile'>
+      <view class='name-phone'>
+        <text>{{item.name}}</text>
+        <text>{{item.phone}}</text>
+        <label wx-if="{{item.isDefault}}">默认</label>
+      </view>
+      <text class='adress'>{{item.adress}}</text>
+    </view>
+    <view class='edit' bindtap='goEdit'>
+      <image src='/images/edit.png'></image>
+      <text>修改</text>
+    </view>
+  </view>
+</view>
