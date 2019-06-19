@@ -19,11 +19,49 @@ Page({
     console.log("options>>>", options)
     if(!options.id) return;
     this.setData({
-      id: options.id,
+      id: options.id, // 非采购表进来，只有这个字段，下面的字段，都是采购表进来才有的
       origin: options.origin || "",
       labelIndex: options.labelIndex || -1,
-      stockIndex: options.stockIndex || -1
+      stockIndex: options.stockIndex || -1,
+      specsName: options.spec || "",
+      price: options.price || 0
     })
+    if(this.data.origin == "order") {
+      this.getOrderDetail();
+      return;
+    }
+    this.getCommonDetail();
+  },
+  // 下单表进来的，获取的详情接口
+  getOrderDetail() {
+    console.log(">>>>>", this.data.id)
+    wx.request({
+      url: app.reqUrl + "mini.cart_info",
+      method: "GET",
+      header: {
+        "x-access-token": app.globalData.token
+      },
+      data: {
+        id: this.data.id,
+        uid: ""
+      },
+      success: (res) => {
+        console.log("res::::: >>>>", res)
+        if (res.data.errcode != 0) return;
+        let goods = res.data.goods_info
+        this.setData({
+          specsName: goods.specs[0].name,
+          price: goods.specs[0].price,
+          count: goods.count,
+          info: goods,
+        })
+        console.log(">>>", this.data.info);
+        wxParse.wxParse('productDetail', 'html', this.data.info.content, this, 5);
+      }
+    })
+  },
+  // 普通页面进来的，或取的详情接口
+  getCommonDetail() {
     wx.request({
       url: app.reqUrl + "mini.goods_info",
       method: "GET",
@@ -31,15 +69,23 @@ Page({
         "x-access-token": app.globalData.token
       },
       data: {
-        id: this.data.id
+        id: this.data.id,
+        uid: ""
       },
       success: (res) => {
         console.log("res: >>>>", res)
-        if(res.data.errcode != 0) return;
+        if (res.data.errcode != 0) return;
+        let goods = res.data.goods_info
+        // 假如是从采购表进来该页面的，就将规格变为采购表的规格
+        if (this.data.origin == "purchase") {
+          goods.specs = [{
+            name: this.data.specsName
+          }]
+        }
         this.setData({
-          info: res.data.goods_info,
+          info: goods,
         })
-        console.log(">>>",this.data.info);
+        console.log(">>>", this.data.info);
         wxParse.wxParse('productDetail', 'html', this.data.info.content, this, 5);
       }
     })
@@ -87,17 +133,31 @@ Page({
   },
   // 立即添加
   addGoods() {
+    // 采购表进来的走这里
     if(this.data.origin == "purchase") {
       this.postPurchase();
       return;
     }
+    // 下单表进来的走这里
+    if(this.data.origin == "order") {
+      this.postOrder();
+      return;
+    }
+    // 产品册进来的走这里
     this.postGoods();
   },
-  // 将添加商品的商品带至purchase页
+  // 将添加的商品数量带至purchase页
   postPurchase() {
     let pages = getCurrentPages();
     let prePage = pages[pages.length - 2];
     prePage.addProduct(this.data.labelIndex, this.data.stockIndex, this.data.count);
+    wx.navigateBack();
+  },
+  // 将添加的商品数量带至order页
+  postOrder() {
+    let pages = getCurrentPages();
+    let prePage = pages[pages.length - 2];
+    prePage.addProduct(this.data.stockIndex, this.data.count);
     wx.navigateBack();
   },
   // 添加商品至采购列表
@@ -130,7 +190,6 @@ Page({
             url: '/pages/purchase/purchase',
           })
         }, 500)
-        
       }
     })
   },

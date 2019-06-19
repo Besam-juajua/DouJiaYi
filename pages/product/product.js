@@ -75,42 +75,7 @@ Page({
   data: {
     imgUrl: app.imgUrl,
     page: 0,
-    productList: [{
-      thumb1: "/images/test.png",
-      text1: "我是测试数据1",
-      thumb2: "/images/test.png",
-      text2: "我是测试数据2",
-      thumb3: "/images/test.png",
-      text3: "我是测试数据3"
-    }, {
-      thumb1: "/images/test.png",
-      text1: "我是测试数据4",
-      thumb2: "/images/test.png",
-      text2: "我是测试数据5",
-      thumb3: "/images/test.png",
-      text3: "我是测试数据6"
-    }, {
-      thumb1: "/images/test.png",
-      text1: "我是测试数据7",
-      thumb2: "/images/test.png",
-      text2: "我是测试数据8",
-      thumb3: "/images/test.png",
-      text3: "我是测试数据9"
-    }, {
-      thumb1: "/images/test.png",
-      text1: "我是测试数据10",
-      thumb2: "/images/test.png",
-      text2: "我是测试数据11",
-      thumb3: "/images/test.png",
-      text3: "我是测试数据12"
-    }, {
-      thumb1: "/images/test.png",
-      text1: "我是测试数据13",
-      thumb2: "/images/test.png",
-      text2: "我是测试数据14",
-      thumb3: "/images/test.png",
-      text3: "我是测试数据15"
-    }]
+    productList: []
   },
   onLoad() {
     getList(this, true);

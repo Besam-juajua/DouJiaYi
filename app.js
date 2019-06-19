@@ -48,6 +48,7 @@ App({
   },
   globalData: {
     userinfo: null,
-    token: ""
+    token: "",
+    addressId: "", // 用户选择的收货地址
   }
 })

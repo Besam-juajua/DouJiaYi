@@ -47,7 +47,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 20,
+			"current": 23,
 			"list": [
 				{
 					"id": -1,
@@ -193,6 +193,28 @@
 					"id": -1,
 					"name": "product",
 					"pathName": "pages/product/product",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "editAdress",
+					"pathName": "pages/editAdress/editAdress",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 22,
+					"name": "adress",
+					"pathName": "pages/adress/adress",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "feedback",
+					"pathName": "pages/feedback/feedback",
+					"query": "",
 					"scene": null
 				}
 			]

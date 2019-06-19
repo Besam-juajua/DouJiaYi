@@ -11,24 +11,20 @@
 <view class='my-order'>
   <view class='preview'>
     <text>我的订单</text>
-    <text bindtap='goMyOrder'>查看全部</text>
+    <text data-type="0" bindtap='goMyOrder'>查看全部</text>
   </view>
   <view class='order-type'>
     <view class='type-item' data-type="0" bindtap='goMyOrder'>
       <image src='/images/will_pay.png' style='width: 46rpx; height: 46rpx;'></image>
-      <text>待付款</text>
+      <text>待接单</text>
     </view>
     <view class='type-item' data-type="1" bindtap='goMyOrder'>
       <image src='/images/will_goods.png' style='width: 44rpx; height: 44rpx;'></image>
-      <text>待收货</text>
+      <text>已接单</text>
     </view>
     <view class='type-item' data-type="2" bindtap='goMyOrder'>
       <image src='/images/will_appraise.png' style='width: 48rpx; height: 44rpx;'></image>
-      <text>待评价</text>
-    </view>
-    <view class='type-item' data-type="3" bindtap='goMyOrder'>
-      <image src='/images/refund.png' style='width: 44rpx; height: 44rpx;'></image>
-      <text>退款中</text>
+      <text>已取消</text>
     </view>
   </view>
 </view>

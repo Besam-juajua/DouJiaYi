@@ -1,29 +1,29 @@
 <view class="input-list">
   <view class='input-item'>
     <text>收货人</text>
-    <input type='text' class='input' placeholder='请填写您的姓名'></input>
+    <input type='text' class='input' value="{{name}}" bindinput='getName' placeholder='请填写您的姓名'></input>
   </view>
   <view class='input-item'>
     <text>手机号码</text>
-    <input type='text' class='input' placeholder='请输入手机号码'></input>
+    <input type='text' class='input' value="{{phone}}" bindinput='getPhone' placeholder='请输入手机号码'></input>
   </view>
-  <view class='input-item enter-adress'>
+  <view class='input-item enter-adress' bindtap='chooseAddress'>
     <text>所在地址</text>
-    <view class='input'>请选择所在地址</view>
+    <view class='input'>{{address || "请选择所在地址"}}</view>
     <image src='/images/right_gray.png'></image>
   </view>
   <view class='input-item'>
     <text>详细地址</text>
-    <input type='text' class='input' placeholder='请输入详细地址'></input>
+    <input type='text' value="{{scopeAddress}}" class='input' bindinput='getScope' placeholder='请输入详细地址'></input>
   </view>
 </view>
 
 <view class='set-default'>
   <text>设置默认地址</text>
-  <switch color='#F32939' class='switch'></switch>
+  <switch color='#F32939' checked='{{isDefault}}' class='switch'></switch>
 </view>
 
 <view class='btn-group'>
-  <button class='save'>保存</button>
-  <button class='delete'>删除</button>
+  <button class='save' bindtap="submitAddress">保存</button>
+  <button class='delete' wx:if="{{!isAdd}}" bindtap='deleteAddress'>删除</button>
 </view>

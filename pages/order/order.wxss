@@ -1,5 +1,5 @@
 .order-list {
-  padding: 0 20rpx;
+  padding: 0 20rpx 76rpx;
 }
 
 .order-item {

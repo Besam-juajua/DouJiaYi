@@ -1,2 +1,2 @@
-<textarea class="content" placeholder="请在此处输入投诉及建议~" maxlength='1000'></textarea>
-<button class='submit'>确认</button>
+<textarea class="content" placeholder="请在此处输入投诉及建议~" maxlength='1000' value='{{content}}' bindinput='getContent'></textarea>
+<button class='submit' bindtap='feedback'>确认</button>

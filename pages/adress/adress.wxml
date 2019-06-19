@@ -1,16 +1,17 @@
 <view class="adress-list">
-  <view class='adress-item' wx:for="{{adressList}}" wx:key="{{item.name}}">
+  <view class='adress-item' wx:for="{{addressList}}" wx:key="{{item.name}}">
     <view class='profile'>
       <view class='name-phone'>
-        <text>{{item.name}}</text>
-        <text>{{item.phone}}</text>
-        <label wx-if="{{item.isDefault}}">默认</label>
+        <text>{{item.username}}</text>
+        <text>{{item.mobile}}</text>
+        <label wx-if="{{item.is_default}}">默认</label>
       </view>
-      <text class='adress'>{{item.adress}}</text>
+      <text class='adress'>{{item.city + item.district + item.detail}}</text>
     </view>
-    <view class='edit' bindtap='goEdit'>
+    <view class='edit' data-type="0" data-id="{{item._id}}" data-name="{{item.username}}" data-phone="{{item.mobile}}" data-detail="{{item.detail}}" bindtap='goEdit'>
       <image src='/images/edit.png'></image>
       <text>修改</text>
     </view>
   </view>
 </view>
+<button class='btn-add' data-type="1" bindtap='goEdit'>添加地址</button>
