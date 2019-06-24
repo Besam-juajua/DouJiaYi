@@ -6,9 +6,9 @@
         <text>{{item.mobile}}</text>
         <label wx-if="{{item.is_default}}">默认</label>
       </view>
-      <text class='adress'>{{item.city + item.district + item.detail}}</text>
+      <text class='adress'>{{item.address + item.detail}}</text>
     </view>
-    <view class='edit' data-type="0" data-id="{{item._id}}" data-name="{{item.username}}" data-phone="{{item.mobile}}" data-detail="{{item.detail}}" bindtap='goEdit'>
+    <view class='edit' data-type="0" data-id="{{item._id}}" data-name="{{item.username}}" data-phone="{{item.mobile}}" data-address="{{item.address}}" data-detail="{{item.detail}}" bindtap='goEdit'>
       <image src='/images/edit.png'></image>
       <text>修改</text>
     </view>

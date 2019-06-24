@@ -46,6 +46,7 @@ page {
 }
 
 .preview text:first-of-type {
+  float: left;
   font-size: 30rpx;
   color: #333333;
 }
@@ -56,10 +57,16 @@ page {
   color: #F32939;
 }
 
+.preview:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 .order-type {
   display: flex;
   justify-content: space-between;
-  margin-top: 40rpx;
+  margin-top: 28rpx;
 }
 
 .order-type .type-item {

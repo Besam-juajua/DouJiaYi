@@ -1,3 +1,6 @@
+const app = getApp();
+const win = require("../../utils/win.js");
+
 Page({
   data: {
     helpList: [{
@@ -13,5 +16,26 @@ Page({
       title: "D．你们的服务时间已经超过协议规定时间了怎么办？",
       content: "协议规定时间内未满意交付，平台会按相应比例进行超时赔付。"
     }]
+  },
+  onLoad(options) {
+    this.getList();
+  },
+  getList() {
+    wx.request({
+      url: app.reqUrl + 'mini.about_help',
+      header: {
+        "x-access-token": app.globalData.token
+      },
+      success: (res) => {
+        console.log("帮助列表>>>", res)
+        if (res.data.errcode != 0) {
+          win.nlog("加载失败~");
+          return;
+        }
+        this.setData({
+
+        })
+      }
+    })
   }
 })

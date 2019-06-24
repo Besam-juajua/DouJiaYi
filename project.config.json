@@ -47,7 +47,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 23,
+			"current": 25,
 			"list": [
 				{
 					"id": -1,
@@ -215,6 +215,19 @@
 					"name": "feedback",
 					"pathName": "pages/feedback/feedback",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "person",
+					"pathName": "pages/person/person",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "person",
+					"pathName": "pages/message/message",
 					"scene": null
 				}
 			]

@@ -46,7 +46,6 @@ Page({
         uid: ""
       },
       success: (res) => {
-        console.log("res::::: >>>>", res)
         if (res.data.errcode != 0) return;
         let goods = res.data.goods_info
         this.setData({
@@ -195,14 +194,10 @@ Page({
   },
   // 分享
   onShareAppMessage(res) {
-    if(res.from == "button") {
-      wx.showToast({
-        title: '我是吐丝，我弹出来了！！！！',
-      })
-    }
     return {
-      title: "我是转发的",
-      path: "/pages/purchase/purchase"
+      title: "豆加壹食品",
+      path: "/pages/index/index",
+      imageUrl: "/images/home_banner.png"
     }
   }
 })

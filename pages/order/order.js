@@ -50,6 +50,13 @@ function getList(self, isReload = false) {
 Page({
   data: {
     imgUrl: app.imgUrl,
+    addrId: "",
+    address: {
+      username: "",
+      phone: "",
+      address: "请选择收获地址",
+      scopeAddress: "",
+    },
     page: 0,
     totalCount: 0, // 总个数
     totalPrice: 0, // 总价格
@@ -57,6 +64,23 @@ Page({
   },
   onLoad() {
     getList(this, true);
+  },
+  onShow() {
+    let default_address = wx.getStorageSync("default_address");
+    if(default_address) {
+      this.setData({
+          address: JSON.parse(default_address),
+         addrId: JSON.parse(default_address).id
+      })
+    }
+    if(app.globalData.refreshOrder) {
+      getList(this, true);
+      wx.pageScrollTo({
+        scrollTop: 0,
+        duration: 300,
+      })
+      app.globalData.refreshOrder = false;
+    }
   },
   onPullDownRefresh() {
     getList(this, true);
@@ -120,17 +144,38 @@ Page({
     this.alterCount(id, index);
   },
   toPay(e) {
+    if (!wx.getStorageSync("default_address")) {
+      wx.navigateTo({
+        url: '/pages/adress/adress?origin=order',
+      })
+      return;
+    }
     wx.request({
       url: app.reqUrl + 'mini.cart_add',
       header: {
         "x-access-token": app.globalData.token
       },
       data: {
-        addrId: wx.getStorageSync("default_address"),
+        addrId: this.data.addrId,
       },
       success: (res) => {
-        console.log(res)
+        if(res.errcode != 0) {
+          win.nlog(res.description);
+          return;
+        }
+        win.nlog("下单成功~", 300);
+        setTimeout(() => {
+          wx.navigateTo({
+            url: '/pages/myOrder/myOrder?type=0',
+          })
+        }, 300)
       }
     })
   },
+  // 编辑地址
+  goAdress() {
+    wx.navigateTo({
+      url: '/pages/adress/adress',
+    })
+  }
 })

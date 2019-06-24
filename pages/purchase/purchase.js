@@ -132,7 +132,8 @@ Page({
             win.nlog(res.data.description);
             return;
           }
-          win.nlog("下单成功、快去结算吧~");
+          win.nlog("下单成功、快去结算吧~", 500);
+          app.globalData.refreshOrder = true;
           setTimeout(() => {
             wx.switchTab({
               url: '/pages/order/order',

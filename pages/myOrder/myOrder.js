@@ -31,9 +31,8 @@ function getList(self, isReload = false) {
       list.forEach((val, index) => {
         list[index].createDate = format.formatTime(new Date(val.createDate));
       })
-      page += 1;
       self.setData({
-        page: page,
+        page: page + 1,
         orderList: list,
       })
     },

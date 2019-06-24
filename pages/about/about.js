@@ -1,5 +1,30 @@
+let wxParse = require("../../wxParse/wxParse.js");
+const app = getApp();
+const win = require("../../utils/util.js");
+
 Page({
   data: {
-    content: "      豆加壹食品创办于2017年，是一家专业从事各类蒸包、糕点及相关设备订制的公司。公司从源头到配送的各个环节严格把关，确保把最新鲜的食品以最快的速度送到顾客手里。\n秉着“用真诚服务客户，用美食回馈消费者”的宗旨，公司以诚信服务和优质产品，赢得了众人的赞誉。现有招牌产品如：广式流沙包、核桃包、广式叉烧包、流沙猪仔包、青麦苗肠仔包，椰香黄金糕、红枣糕......深受客户和消费者喜爱。\n现面向全国招商联营，欢迎有识之士，合作加盟."
+    content: ""
+  },
+  onLoad() {
+    this.aboutUs();
+  },
+  aboutUs() {
+    wx.request({
+      url: app.reqUrl + 'mini.about_us',
+      header: {
+        "x-access-token": app.globalData.token
+      },
+      success: (res) => {
+        if (res.data.errcode != 0) {
+          win.nlog("加载失败~");
+          return;
+        }
+        // this.setData({
+        //   content: res.data.content.content
+        // })
+        wxParse.wxParse('content', 'html', res.data.content.content, this, 5);
+      }
+    })
   }
 })

@@ -35,19 +35,9 @@
     <text>我的消息</text>
     <image src='/images/right_gray.png'></image>
   </view>
-  <view class='information-item' bindtap='goFavorite'>
-    <image src='/images/favorite.png'></image>
-    <text>我的收藏</text>
-    <image src='/images/right_gray.png'></image>
-  </view>
   <view class='information-item' bindtap='goAdress'>
     <image src='/images/location.png' style='width: 30rpx; height: 39rpx;'></image>
     <text>收货地址</text>
-    <image src='/images/right_gray.png'></image>
-  </view>
-  <view class='information-item' bindtap='goGoodsRest'>
-    <image src='/images/product_rest.png' style='width: 30rpx; height: 35rpx;'></image>
-    <text>商品库存</text>
     <image src='/images/right_gray.png'></image>
   </view>
 </view>
@@ -68,7 +58,7 @@
     <text>投诉与建议</text>
     <image src='/images/right_gray.png'></image>
   </view>
-  <view class='information-item'>
+  <view class='information-item' bindtap='call'>
     <image src='/images/call.png'></image>
     <text>服务热线:<text id='phone'> 400-548952</text></text>
     <image src='/images/right_gray.png'></image>

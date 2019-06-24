@@ -146,6 +146,10 @@ swiper-item image {
   background: white;
 }
 
+.about-doujiayi image {
+  border-radius: 14rpx;
+}
+
 .about-title {
   padding: 16rpx 0;
 }

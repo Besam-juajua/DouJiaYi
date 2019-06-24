@@ -5,7 +5,17 @@ Page({
   data: {
     addressList: [],
   },
-  onLoad() {
+  onLoad(options) {
+    if(options.origin == "order") {
+      win.nlog("请设置默认收货地址~");
+    }
+    this.getList();
+  },
+  onShow() {
+    console.log(">>>>默认地址", wx.getStorageSync("default_address"))
+  },
+  // 获取地址列表
+  getList() {
     wx.request({
       url: app.reqUrl + 'mini.address_list',
       header: {
@@ -26,10 +36,16 @@ Page({
       }
     })
   },
+  // 去编辑
   goEdit(e) {
     let data = e.currentTarget.dataset;
     wx.navigateTo({
-      url: '/pages/editAdress/editAdress?type=' + data.type + "&id=" + data.id + "&name=" + data.name + "&phone=" + data.phone + "&detail=" + data.detail,
+      url: '/pages/editAdress/editAdress?type=' + data.type + "&id=" + data.id + "&name=" + data.name + "&phone=" + data.phone + "&address=" + data.address + "&detail=" + data.detail,
     })
+  },
+  // 刷新列表
+  refreshAddress() {
+    console.log(">>>>>>refreshAddress")
+    this.getList();
   }
 })

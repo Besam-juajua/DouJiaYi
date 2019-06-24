@@ -1,3 +1,15 @@
+<!-- 地址、姓名、号码 -->
+<view class="person">
+  <text>订单送至</text>
+  <view class='adress' bindtap='goAdress'>
+    <text>{{address.address + address.scopeAddress}}</text>
+    <image src='/images/right_gray.png'></image>
+  </view>
+  <view class='name-phone' wx:if="{{addrId}}">
+    <text>{{address.name}}</text>
+    <text>{{address.phone}}</text>
+  </view>
+</view>
 <view class='order-list'>
   <view class='order-item' wx:for="{{orderList}}" wx:key="{{item._id}}" data-index="{{index}}" data-id="{{item._id}}" data-label="{{item.label}}" bindtap='goDetail'>
     <image src='{{imgUrl + item.gid.thumb}}' class='title-img'></image>

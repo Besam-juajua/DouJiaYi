@@ -1,7 +1,7 @@
 <view>
   <swiper>
-    <swiper-item wx:for="{{advertises}}" wx:key="{{item.path}}">
-      <image src='{{imgUrl + item.path}}'></image>
+    <swiper-item wx:for="{{advertises}}" wx:key="{{item.path}}" data-index="{{index}}" bindtap="lookPictrue">
+      <image src='{{imgUrl + item.path}}' mode='aspectFit'></image>
     </swiper-item>
   </swiper>
   <!-- 三个功能 -->
@@ -10,7 +10,7 @@
       <image src='/images/product_function.png'></image>
       <text>产品册</text>
     </view>
-    <view class='function-item' bindtap='goPurchase'>
+    <view class='function-item' bindtap='goOrder'>
       <image src='/images/order_function.png'></image>
       <text>下单</text>
     </view>
@@ -28,16 +28,16 @@
       </view>
       <image src='/images/feature_title.png'></image>
     </view>
-    <view class="group group-one left">
+    <view class="group group-one left" data-id="{{goods[0]._id}}" bindtap='goDetail'>
       <image src='{{imgUrl + goods[0].logo}}'></image>
       <text>{{goods[0].title}}</text>
     </view>
     <view class="group group-two right">
-      <view class='min-img'>
+      <view class='min-img' data-id="{{goods[1]._id}}" bindtap='goDetail'>
         <image src='{{imgUrl + goods[1].logo}}'></image>
         <text>{{goods[1].title}}</text>
       </view>
-      <view class='min-img'>
+      <view class='min-img' data-id="{{goods[2]._id}}" bindtap='goDetail'>
         <image src='{{imgUrl + goods[2].logo}}'></image>
         <text>{{goods[2].title}}</text>
       </view>
@@ -49,7 +49,7 @@
       <text>关于豆加壹</text>
       <text>About us</text>
     </view>
-    <image src='/images/about_banner.png'></image>
+    <image src='{{imgUrl + about}}' bindtap='goAbout'></image>
   </view>
   <!-- 客户必读 -->
   <view class='need-read'>

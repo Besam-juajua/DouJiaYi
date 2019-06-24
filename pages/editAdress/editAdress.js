@@ -17,14 +17,15 @@ Page({
       this.setData({
         isAdd: true
       })
-    } else {
-      this.setData({
-        id: options.id,
-        name: options.name,
-        phone: options.phone,
-        scopeAddress: options.detail
-      })
+      return;
     }
+    this.setData({
+      id: options.id,
+      name: options.name,
+      phone: options.phone,
+      address: options.address,
+      scopeAddress: options.detail
+    })
   },
   getName(e) {
     this.setData({
@@ -59,11 +60,12 @@ Page({
     console.log("isDefault", this.data.isDefault);
     wx.request({
       url: app.reqUrl + 'mini.address_operate',
-      method: "GET",
+      method: "POST",
       header: {
         "x-access-token": app.globalData.token
       },
       data: {
+        id: this.data.id,
         username: this.data.name,
         mobile: this.data.phone,
         address: this.data.address,
@@ -77,10 +79,21 @@ Page({
           return;
         }
         win.nlog("添加成功");
-        if(!this.data.isAdd && this.data.isDefault) {
+        let obj = {
+          id: this.data.id,
+          name: this.data.name,
+          phone: this.data.phone,
+          address: this.data.address,
+          scopeAddress: this.data.scopeAddress,
+        }
+        let default_address = JSON.stringify(obj);
+        let pages = getCurrentPages();
+        let pre = pages[pages.length - 2];
+        pre.refreshAddress();
+        if(this.data.isDefault) {
           wx.setStorage({
             key: 'default_address',
-            data: this.data.id,
+            data: default_address,
           })
         }
         setTimeout(() => {
@@ -104,6 +117,9 @@ Page({
           return;
         }
         win.nlog("删除成功")
+        let pages = getCurrentPages();
+        let pre = pages[pages.length - 2];
+        pre.refreshAddress();
         setTimeout(() => {
           wx.navigateBack();
         }, 500)

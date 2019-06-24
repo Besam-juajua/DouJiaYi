@@ -50,5 +50,6 @@ App({
     userinfo: null,
     token: "",
     addressId: "", // 用户选择的收货地址
+    refreshOrder: false, // 刷新下单页面
   }
 })

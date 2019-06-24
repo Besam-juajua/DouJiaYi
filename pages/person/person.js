@@ -1,4 +1,5 @@
 const app = getApp();
+const win = require('../../utils/win.js');
 
 Page({
   data: {
@@ -18,19 +19,9 @@ Page({
       url: '/pages/message/message'
     })
   },
-  goFavorite() {
-    wx.navigateTo({
-      url: '/pages/favorite/favorite'
-    })
-  },
   goAdress() {
     wx.navigateTo({
       url: '/pages/adress/adress'
-    })
-  },
-  goGoodsRest() {
-    wx.navigateTo({
-      url: '/pages/goodsRest/goodsRest'
     })
   },
   goHelp() {
@@ -47,6 +38,13 @@ Page({
     wx.navigateTo({
       url: '/pages/feedback/feedback'
     })
+  },
+  call(e) {
+    wx.makePhoneCall({
+      phoneNumber: "400548952",
+      fail: (res) => {
+        win.nlog("电话唤起失败~");
+      }
+    })
   }
-
 })

@@ -5,9 +5,10 @@ var nlog = (title) => {
   })
 }
 
-var toast = (title) => {
+var toast = (title, time = 1000) => {
   wx.showToast({
-    title: title
+    title: title,
+    duration: time,
   })
 }
 

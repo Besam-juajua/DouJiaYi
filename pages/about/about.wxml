@@ -1,4 +1,8 @@
 <view class='top-banner'>
   <text class='title'>豆加壹简介</text>
 </view>
-<text class='about-content'>{{content}}</text>
+<view class='about-content'>
+  <template is="wxParse" data="{{wxParseData: content.nodes}}" />
+</view>
+
+<import src="../../wxParse/wxParse.wxml" />

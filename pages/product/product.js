@@ -1,37 +1,3 @@
-/**   
- * 分页请求列表 （移植时，具体更改 url, method, header, data）
- * 请求参数： theirPage：页面当前页数，从 0 开始
- *           theirList: 存放列表的变量
- *           isReload: 是否重新刷新
- * 返回参数： page: 页面新页数
- *           list: 页面新列表
- */
-// function getList(theirList, theirPage, isReload = false) {
-//   let page = isReload ? 0 : theirPage;
-//   let list = isReload ? [] : theirList;
-//   wx.request({
-//     url: url,
-//     method: "POST",
-//     data: {
-//       page: page + 1,
-//     },
-//     success: (res) => {
-//       console.log("><> ><> 分页: ",res);
-//       if(res.data && res.data.length == 0) return;
-//     },
-//     fail: (res) => {
-//       page = theirPage;
-//       list = theirList;
-//     }
-//   })
-//   return {
-//     page,
-//     list
-//   };
-// }
-
-
-
 const app = getApp();
 const win = require("../../utils/win.js")
 
@@ -55,9 +21,8 @@ function getList(self, isReload = false) {
         val.count = 0;
         return val;
       })
-      page += 1;
       self.setData({
-        page: page,
+        page: page + 1,
         productList: list,
       })
     },

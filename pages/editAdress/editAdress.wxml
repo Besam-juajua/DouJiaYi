@@ -9,7 +9,7 @@
   </view>
   <view class='input-item enter-adress' bindtap='chooseAddress'>
     <text>所在地址</text>
-    <view class='input'>{{address || "请选择所在地址"}}</view>
+    <view class="input {{address? 'active' : ''}}">{{address || "请选择所在地址"}}</view>
     <image src='/images/right_gray.png'></image>
   </view>
   <view class='input-item'>

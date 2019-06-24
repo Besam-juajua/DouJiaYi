@@ -20,12 +20,7 @@ page {
 }
 
 .about-content {
-  display: inline-block;
-  line-height: 40rpx;
-  padding: 30rpx 20rpx 52rpx;
-  background: white;
-  text-indent: 60rpx;
-  letter-spacing: 2rpx;
-  font-size: 30rpx;
-  color: #222222;
+  width: calc(100% - 40rpx);
+  margin: 20rpx;
+  overflow: hidden;
 }

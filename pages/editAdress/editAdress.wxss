@@ -37,6 +37,10 @@ page {
   color: #777777;
 }
 
+.enter-adress .input.active {
+  color: #111111;
+}
+
 .set-default {
   display: flex;
   align-items: center;
