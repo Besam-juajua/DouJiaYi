@@ -4,10 +4,10 @@
     <view class='red-dot'></view>
   </view>
   <view class='message-content'>
-    <image src='{{item.thumb}}'></image>
+    <image src='/images/logo.png'></image>
     <view class='text-content'>
       <text>{{item.content}}</text>
-      <text>{{item.date}}</text>
+      <text>{{item.createDate}}</text>
     </view>
   </view>
 </view>

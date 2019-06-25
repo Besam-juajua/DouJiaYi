@@ -15,7 +15,6 @@
     "pages/adress/adress",
     "pages/editAdress/editAdress",
     "pages/detail/detail",
-    "pages/setOrder/setOrder",
     "pages/remark/remark",
     "pages/login/login"
   ],

@@ -13,7 +13,6 @@ function getList(self, isReload = false) {
       page: page + 1
     },
     success(res) {
-      console.log("product", res);
       if (res.data.errcode != 0) return;
       if (res.data.goods && res.data.goods.length == 0) return;
       list = res.data.goods;

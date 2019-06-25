@@ -4,10 +4,12 @@ const win = require('../../utils/win.js');
 Page({
   data: {
     imgUrl: app.imgUrl,
-    userinfo: app.globalData.userinfo
+    userinfo: {},
   },
   onShow() {
-    console.log(app.globalData.userinfo)
+    this.setData({
+      userinfo: app.globalData.userinfo
+    })
   },
   goMyOrder(e) {
     wx.navigateTo({

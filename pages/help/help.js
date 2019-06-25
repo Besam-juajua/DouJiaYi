@@ -27,7 +27,6 @@ Page({
         "x-access-token": app.globalData.token
       },
       success: (res) => {
-        console.log("帮助列表>>>", res)
         if (res.data.errcode != 0) {
           win.nlog("加载失败~");
           return;

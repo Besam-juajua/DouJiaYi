@@ -23,7 +23,6 @@ Page({
       },
       success: (res) => {
         win.hideLoading();
-        console.log(res)
         if(res.data.errcode != 0) {
           win.nlog(res.description);
           return;

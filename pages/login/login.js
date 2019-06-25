@@ -27,8 +27,6 @@ Page({
     })
   },
   postLogin() {
-    console.log(this.data.user);
-    console.log(this.data.pwd)
     wx.request({
       url: app.reqUrl + 'mini.busi_login',
       method: "POST",
@@ -37,7 +35,6 @@ Page({
         password: this.data.pwd
       },
       success: (res) => {
-        console.log(res)
         if(res.data.errcode != 0) {
           win.nlog(res.data.description);
           return;

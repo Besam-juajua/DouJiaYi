@@ -1,5 +1,6 @@
 const app = getApp();
 const win = require("../../utils/win.js");
+const format = require("../../utils/util.js");
 
 // 分页数据
 function getList(self, isReload = false) {
@@ -14,15 +15,19 @@ function getList(self, isReload = false) {
       page: page + 1
     },
     success(res) {
-      console.log("message",res);
       if (res.data.errcode != 0) {
         win.nlog(res.description);
         return;
       }
-      if (res.data.msgs && res.data.msgs.length == 0) return;
+      let msgs = res.data.msgs;
+      if (msgs && msgs.length == 0) return;
+      msgs = msgs.map(val => {
+        val.createDate = format.formatTime(new Date(val.createDate));
+        return val;
+      })
       self.setData({
         page: page + 1,
-        orderList: list,
+        messageList: res.data.msgs,
       })
     },
     fail(res) {

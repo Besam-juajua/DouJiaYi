@@ -21,7 +21,6 @@ Page({
         'x-access-token': app.globalData.token
       },
       success: (res) => {
-        console.log("采购表:", res)
         if (res.data.errcode != 0) {
           win.nlog(res.data.description);
           return;
@@ -64,7 +63,6 @@ Page({
         labelId: labelId
       },
       success: (res) => {
-        console.log("采购列表", res);
         if (res.data.errcode != 0) {
           win.nlog(res.data.description);
           return;
@@ -108,40 +106,38 @@ Page({
     let productList = this.data.productList;
     for (let i = 0; i < productList.length; i++) {
       for (let j = 0; j < productList[i].value.length; j++) {
-        if(productList[i].value[j].count > 0) {
+        if (productList[i].value[j].count > 0) {
           let product = {
-            gid: productList[i].value[j].gid,
+            gid: productList[i].value[j].gid._id,
             gspec: productList[i].value[j].gspec,
             count: productList[i].value[j].count
           }
           allBuy.push(product);
         }
       }
-      wx.request({
-        url: app.reqUrl + 'mini.stocks_add',
-        method: "POST",
-        header: {
-          "x-access-token": app.globalData.token
-        },
-        data: {
-          stocks: JSON.stringify(allBuy)
-        },
-        success: (res) => {
-          console.log("加入下单表>>>>>", res);
-          if (res.data.errcode != 0) {
-            win.nlog(res.data.description);
-            return;
-          }
-          win.nlog("下单成功、快去结算吧~", 500);
-          app.globalData.refreshOrder = true;
-          setTimeout(() => {
-            wx.switchTab({
-              url: '/pages/order/order',
-            })
-          }, 500);
-        }
-      })
-      console.log("购物车>>>>", JSON.stringify(allBuy));
     }
+    wx.request({
+      url: app.reqUrl + 'mini.stocks_add',
+      method: "POST",
+      header: {
+        "x-access-token": app.globalData.token
+      },
+      data: {
+        stocks: JSON.stringify(allBuy)
+      },
+      success: (res) => {
+        if (res.data.errcode != 0) {
+          win.nlog(res.data.description);
+          return;
+        }
+        win.nlog("下单成功、快去结算吧~", 500);
+        app.globalData.refreshOrder = true;
+        setTimeout(() => {
+          wx.switchTab({
+            url: '/pages/order/order',
+          })
+        }, 500);
+      }
+    })
   }
 })

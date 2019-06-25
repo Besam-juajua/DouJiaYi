@@ -43,7 +43,7 @@ page {
 
 .message-content .text-content {
   flex: 1;
-  padding: 30rpx 0;
+  padding: 30rpx 0 60rpx;
   padding-right: 30rpx;
   overflow: hidden;
   color: #7B7B7B;

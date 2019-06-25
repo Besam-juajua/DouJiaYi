@@ -20,7 +20,7 @@ function getList(self, isReload = false) {
         win.nlog(res.description);
         return;
       }
-      if (res.data.carts && res.data.carts.length == 0) return;
+      if (res.data.carts && !isReload && res.data.carts.length == 0) return;
       list = res.data.carts;
       let totalCount = 0;
       let totalPrice = 0;
@@ -69,7 +69,7 @@ Page({
     let default_address = wx.getStorageSync("default_address");
     if(default_address) {
       this.setData({
-          address: JSON.parse(default_address),
+        address: JSON.parse(default_address),
          addrId: JSON.parse(default_address).id
       })
     }
@@ -118,9 +118,6 @@ Page({
       data: {
         id: id,
         count: this.data.orderList[index].count
-      },
-      success: (res) => {
-        console.log(res)
       }
     })
   },
@@ -159,11 +156,12 @@ Page({
         addrId: this.data.addrId,
       },
       success: (res) => {
-        if(res.errcode != 0) {
-          win.nlog(res.description);
+        if(res.data.errcode != 0) {
+          win.nlog(res.data.description);
           return;
         }
-        win.nlog("下单成功~", 300);
+        win.toast("下单成功~", 300);
+        app.globalData.refreshOrder = true;
         setTimeout(() => {
           wx.navigateTo({
             url: '/pages/myOrder/myOrder?type=0',

@@ -12,7 +12,6 @@ Page({
     isDefault: true
   },
   onLoad(options) {
-    console.log(options)
     if(options.type==1) {
       this.setData({
         isAdd: true
@@ -45,7 +44,6 @@ Page({
   chooseAddress() {
     wx.chooseLocation({
       success: (res) => {
-        console.log(res)
         this.setData({
           address: res.address
         })
@@ -57,7 +55,6 @@ Page({
       win.nlog("请继续完善信息");
       return;
     }
-    console.log("isDefault", this.data.isDefault);
     wx.request({
       url: app.reqUrl + 'mini.address_operate',
       method: "POST",
@@ -73,7 +70,6 @@ Page({
         is_default: this.data.isDefault? 1 : 0
       },
       success: (res) => {
-        console.log(res)
         if (res.data.errcode != 0) {
           win.nlog(res.description);
           return;

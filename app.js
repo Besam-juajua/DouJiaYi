@@ -1,8 +1,8 @@
 //app.js
 App({
-  reqUrl: "http://admin.doujiayi.com:3200/?action=",
-  imgUrl: "http://admin.doujiayi.com:3200",
-  imgPath: "http://admin.doujiayi.com:3200",
+  reqUrl: "https://www.doujiayi.com/?action=",
+  imgUrl: "https://www.doujiayi.com",
+  imgPath: "https://www.doujiayi.com",
   onLaunch: function (options) {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []

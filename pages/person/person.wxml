@@ -1,6 +1,6 @@
 <view class='top-container'>
   <view class='profile'>
-    <image src='{{userinfo.headicon? imgUrl+userinfo.headicon : "/images/test.png" }}'></image>
+    <image src='{{userinfo.headicon? imgUrl+userinfo.headicon : "/images/logo.png" }}'></image>
     <view class='profile-text'>
       <text>{{userinfo.username}}</text>
       <text>{{userinfo.mobile}}</text>

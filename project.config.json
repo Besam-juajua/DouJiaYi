@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -21,7 +21,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.6.6",
-	"appid": "wxdace21a466d53d68",
+	"appid": "wxa0b5347b15724985",
 	"projectname": "Douzeakit",
 	"debugOptions": {
 		"hidedInDevtools": []

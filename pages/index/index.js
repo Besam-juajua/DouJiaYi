@@ -8,20 +8,17 @@ Page({
     about: "",
   },
   onLoad() {
+    
     wx.request({
       url: app.reqUrl + 'mini.index',
       method: "GET",
       success: (res) => {
-        console.log("index>>>>",res)
         this.setData({
           advertises: res.data.advertises,
           goods: res.data.goods,
           about: res.data.about_us.thumb
         })
       },
-      fail: (res) => {
-        console.log("error>>>", res)
-      }
     })
   },
   goProduct() {
@@ -54,7 +51,6 @@ Page({
     let imgs = this.data.advertises.map((val) => {
       return this.data.imgUrl + val.path
     })
-    console.log(imgs)
     wx.previewImage({
       urls: imgs,
       current: e.currentTarget.dataset.index

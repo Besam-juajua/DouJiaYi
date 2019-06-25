@@ -11,9 +11,6 @@ Page({
     }
     this.getList();
   },
-  onShow() {
-    console.log(">>>>默认地址", wx.getStorageSync("default_address"))
-  },
   // 获取地址列表
   getList() {
     wx.request({
@@ -25,7 +22,6 @@ Page({
         page: 1
       },
       success: (res) => {
-        console.log("地址列表>>>", res)
         if (res.data.errcode != 0) {
           win.nlog("地址加载失败~");
           return;
@@ -45,7 +41,6 @@ Page({
   },
   // 刷新列表
   refreshAddress() {
-    console.log(">>>>>>refreshAddress")
     this.getList();
   }
 })

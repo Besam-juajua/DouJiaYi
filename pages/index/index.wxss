@@ -38,7 +38,7 @@ swiper-item image {
 }
 
 .product-show {
-  margin-top: 40rpx;
+  margin-top: 26rpx;
   padding: 0 20rpx 30rpx;
   box-sizing: border-box;
   background: white;

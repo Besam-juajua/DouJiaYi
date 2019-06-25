@@ -16,7 +16,6 @@ Page({
     specsName: ""
   },
   onLoad(options) {
-    console.log("options>>>", options)
     if(!options.id) return;
     this.setData({
       id: options.id, // 非采购表进来，只有这个字段，下面的字段，都是采购表进来才有的
@@ -34,7 +33,6 @@ Page({
   },
   // 下单表进来的，获取的详情接口
   getOrderDetail() {
-    console.log(">>>>>", this.data.id)
     wx.request({
       url: app.reqUrl + "mini.cart_info",
       method: "GET",
@@ -54,7 +52,6 @@ Page({
           count: goods.count,
           info: goods,
         })
-        console.log(">>>", this.data.info);
         wxParse.wxParse('productDetail', 'html', this.data.info.content, this, 5);
       }
     })
@@ -72,7 +69,6 @@ Page({
         uid: ""
       },
       success: (res) => {
-        console.log("res: >>>>", res)
         if (res.data.errcode != 0) return;
         let goods = res.data.goods_info
         // 假如是从采购表进来该页面的，就将规格变为采购表的规格
@@ -84,7 +80,6 @@ Page({
         this.setData({
           info: goods,
         })
-        console.log(">>>", this.data.info);
         wxParse.wxParse('productDetail', 'html', this.data.info.content, this, 5);
       }
     })
@@ -178,7 +173,6 @@ Page({
         })
       },
       success: (res) => {
-        console.log("添加结果", res)
         if(res.data.errcode != 0) {
           win.nlog(res.data.description);
           return;

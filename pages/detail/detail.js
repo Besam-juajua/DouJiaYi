@@ -27,7 +27,6 @@ Page({
   },
   // 获取详情数据
   getDetail(id) {
-    console.log("id>>>", id)
     wx.request({
       url: app.reqUrl + 'mini.order_info',
       header: {
@@ -46,7 +45,6 @@ Page({
         this.setData({
           order: info
         })
-        console.log("订单详情", res);
       }
     })
   }
