@@ -1,5 +1,5 @@
 page {
-  background: #F5F5F5;
+  background: #f5f5f5;
 }
 
 .notice-item {
@@ -11,17 +11,28 @@ page {
   display: block;
   padding: 0 20rpx;
   line-height: 90rpx;
-  border-bottom: 1px solid #F5F5F5;
+  border-bottom: 1px solid #f5f5f5;
   font-weight: bold;
   font-size: 34rpx;
-  color: #222222;
+  color: #222;
 }
 
 .notice-item .content {
   padding: 20rpx 30rpx;
-  border-bottom: 1px solid #F5F5F5;
+  border-bottom: 1px solid #f5f5f5;
+  box-sizing: border-box;
   font-size: 30rpx;
-  color: #444444;
+  color: #444;
+}
+
+.notice-item .content .fold {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .notice-item .date-spread {
@@ -34,14 +45,14 @@ page {
 
 .date-spread .date {
   font-size: 22rpx;
-  color: #999999;
+  color: #999;
 }
 
 .date-spread .spread {
   position: absolute;
   right: 20rpx;
   font-size: 26rpx;
-  color: #F32939;
+  color: #f32939;
 }
 
 .date-spread image {
@@ -58,12 +69,12 @@ page {
   display: block;
   width: 250rpx;
   height: 198rpx;
-  margin: 0 auto 30rpx; 
+  margin: 0 auto 30rpx;
 }
 
 .not-notice text {
   display: block;
   text-align: center;
   font-size: 26rpx;
-  color: #999999;
+  color: #999;
 }

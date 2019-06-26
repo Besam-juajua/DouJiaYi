@@ -20,7 +20,7 @@
 
 <view class='set-default'>
   <text>设置默认地址</text>
-  <switch color='#F32939' checked='{{isDefault}}' class='switch'></switch>
+  <switch color='#F32939' checked='{{isDefault}}' class='switch' bindtap='changeSwitch'></switch>
 </view>
 
 <view class='btn-group'>

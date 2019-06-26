@@ -9,7 +9,8 @@ Page({
     phone: "",
     address: "",
     scopeAddress: "",
-    isDefault: true
+    isDefault: true,
+    tempDefault: false, // 记录是否默认地址，以确定在保存时，是否清除本地storage
   },
   onLoad(options) {
     if(options.type==1) {
@@ -23,7 +24,9 @@ Page({
       name: options.name,
       phone: options.phone,
       address: options.address,
-      scopeAddress: options.detail
+      scopeAddress: options.detail,
+      isDefault: options.isDefault == "1",
+      tempDefault: options.isDefault == "1"
     })
   },
   getName(e) {
@@ -50,11 +53,18 @@ Page({
       }
     })
   },
+  // 点击默认按钮
+  changeSwitch() {
+    this.setData({
+      isDefault: !this.data.isDefault
+    })
+  },
   submitAddress() {
     if(!this.data.name || !this.data.phone || !this.data.address || !this.data.scopeAddress) {
       win.nlog("请继续完善信息");
       return;
     }
+    win.loading("正在提交...");
     wx.request({
       url: app.reqUrl + 'mini.address_operate',
       method: "POST",
@@ -71,10 +81,10 @@ Page({
       },
       success: (res) => {
         if (res.data.errcode != 0) {
+          win.hideLoading();
           win.nlog(res.description);
           return;
         }
-        win.nlog("添加成功");
         let obj = {
           id: this.data.id,
           name: this.data.name,
@@ -85,12 +95,17 @@ Page({
         let default_address = JSON.stringify(obj);
         let pages = getCurrentPages();
         let pre = pages[pages.length - 2];
-        pre.refreshAddress();
+        pre.refreshAddress && pre.refreshAddress();
         if(this.data.isDefault) {
           wx.setStorage({
             key: 'default_address',
             data: default_address,
           })
+        }
+        win.hideLoading();
+        win.nlog("提交成功");
+        if(this.data.tempDefault && !this.data.isDefault) {
+          wx.removeStorageSync("default_address")
         }
         setTimeout(() => {
           wx.navigateBack();
@@ -115,7 +130,10 @@ Page({
         win.nlog("删除成功")
         let pages = getCurrentPages();
         let pre = pages[pages.length - 2];
-        pre.refreshAddress();
+        pre.refreshAddress && pre.refreshAddress();
+        if(this.data.tempDefault) {
+          wx.removeStorageSync("default_address")
+        }
         setTimeout(() => {
           wx.navigateBack();
         }, 500)

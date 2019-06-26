@@ -8,7 +8,7 @@
       </view>
       <text class='adress'>{{item.address + item.detail}}</text>
     </view>
-    <view class='edit' data-type="0" data-id="{{item._id}}" data-name="{{item.username}}" data-phone="{{item.mobile}}" data-address="{{item.address}}" data-detail="{{item.detail}}" bindtap='goEdit'>
+    <view class='edit' data-type="0" data-id="{{item._id}}" data-name="{{item.username}}" data-phone="{{item.mobile}}" data-address="{{item.address}}" data-detail="{{item.detail}}" data-default="{{item.is_default}}" bindtap='goEdit'>
       <image src='/images/edit.png'></image>
       <text>修改</text>
     </view>

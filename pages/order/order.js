@@ -28,9 +28,8 @@ function getList(self, isReload = false) {
         totalCount += val.count
         totalPrice += val.count * val.gspec.price;
       })
-      page += 1;
       self.setData({
-        page: page,
+        page: page + 1,
         orderList: list,
         totalCount: count + totalCount,
         totalPrice: price + totalPrice
@@ -70,7 +69,17 @@ Page({
     if(default_address) {
       this.setData({
         address: JSON.parse(default_address),
-         addrId: JSON.parse(default_address).id
+        addrId: JSON.parse(default_address).id
+      })
+    } else {
+      this.setData({
+        address: {
+          username: "",
+          phone: "",
+          address: "请选择收获地址",
+          scopeAddress: "",
+        },
+        addrId: ""
       })
     }
     if(app.globalData.refreshOrder) {

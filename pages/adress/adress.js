@@ -9,6 +9,7 @@ Page({
     if(options.origin == "order") {
       win.nlog("请设置默认收货地址~");
     }
+    win.loading("正在加载...");
     this.getList();
   },
   // 获取地址列表
@@ -22,6 +23,7 @@ Page({
         page: 1
       },
       success: (res) => {
+        win.hideLoading();
         if (res.data.errcode != 0) {
           win.nlog("地址加载失败~");
           return;
@@ -36,7 +38,7 @@ Page({
   goEdit(e) {
     let data = e.currentTarget.dataset;
     wx.navigateTo({
-      url: '/pages/editAdress/editAdress?type=' + data.type + "&id=" + data.id + "&name=" + data.name + "&phone=" + data.phone + "&address=" + data.address + "&detail=" + data.detail,
+      url: '/pages/editAdress/editAdress?type=' + data.type + "&id=" + data.id + "&name=" + data.name + "&phone=" + data.phone + "&address=" + data.address + "&detail=" + data.detail + "&isDefault=" + data.default,
     })
   },
   // 刷新列表

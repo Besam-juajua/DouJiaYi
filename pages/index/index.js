@@ -1,18 +1,22 @@
 const app = getApp();
+const win = require("../../utils/win.js");
 
 Page({
   data: {
     imgUrl: app.imgUrl,
     advertises: [],
-    goods: [],
+    goods: [{logo: ""},{logo: ""},{logo: ""}],
     about: "",
   },
   onLoad() {
-    
     wx.request({
       url: app.reqUrl + 'mini.index',
       method: "GET",
       success: (res) => {
+        if (res.data.errcode != 0) {
+          win.nlog("加载失败~");
+          return;
+        }
         this.setData({
           advertises: res.data.advertises,
           goods: res.data.goods,

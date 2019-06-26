@@ -126,11 +126,14 @@ Page({
         stocks: JSON.stringify(allBuy)
       },
       success: (res) => {
+        console.log("111111111111111")
+        console.log(res)
         if (res.data.errcode != 0) {
           win.nlog(res.data.description);
           return;
         }
-        win.nlog("下单成功、快去结算吧~", 500);
+        console.log("222222222")
+        win.toast("下单成功!", 500);
         app.globalData.refreshOrder = true;
         setTimeout(() => {
           wx.switchTab({
