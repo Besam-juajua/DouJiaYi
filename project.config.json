@@ -10,19 +10,12 @@
 		"minified": true,
 		"newFeature": true,
 		"autoAudits": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		}
+		"coverView": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.6.6",
+	"libVersion": "2.7.2",
 	"appid": "wxa0b5347b15724985",
-	"projectname": "Douzeakit",
+	"projectname": "temp",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
@@ -47,187 +40,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 25,
+			"current": 0,
 			"list": [
-				{
-					"id": -1,
-					"name": "person",
-					"pathName": "pages/person/person",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "order",
-					"pathName": "pages/order/order",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "product",
-					"pathName": "pages/product/product",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "notice",
-					"pathName": "pages/notice/notice",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "purchase",
-					"pathName": "pages/purchase/purchase",
-					"query": "",
-					"scene": null
-				},
 				{
 					"id": -1,
 					"name": "myOrder",
 					"pathName": "pages/myOrder/myOrder",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "message",
-					"pathName": "pages/message/message",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "favorite",
-					"pathName": "pages/favorite/favorite",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "help",
-					"pathName": "pages/help/help",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "about",
-					"pathName": "pages/about/about",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "feedback",
-					"pathName": "pages/feedback/feedback",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "goodsRest",
-					"pathName": "pages/goodsRest/goodsRest",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "adress",
-					"pathName": "pages/adress/adress",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "editAdress",
-					"pathName": "pages/editAdress/editAdress",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "detail",
-					"pathName": "pages/detail/detail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "setOrder",
-					"pathName": "pages/setOrder/setOrder",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "productDetail",
-					"pathName": "pages/productDetail/productDetail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "remark",
-					"pathName": "pages/remark/remark",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "login",
-					"pathName": "pages/login/login",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "login",
-					"pathName": "pages/login/login",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "product",
-					"pathName": "pages/product/product",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "editAdress",
-					"pathName": "pages/editAdress/editAdress",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 22,
-					"name": "adress",
-					"pathName": "pages/adress/adress",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "feedback",
-					"pathName": "pages/feedback/feedback",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "person",
-					"pathName": "pages/person/person",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "person",
-					"pathName": "pages/message/message",
 					"scene": null
 				}
 			]

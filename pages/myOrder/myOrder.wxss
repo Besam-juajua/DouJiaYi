@@ -5,7 +5,6 @@ page {
 .top-nav {
   display: flex;
   height: 60rpx;
-  /* align-items: center; */
   background: white;
 }
 
@@ -31,10 +30,6 @@ page {
   border-bottom: 4rpx solid #F32939;
 }
 
-.order-list {
-
-}
-
 .order-item {
   margin: 20rpx;
   background: white;
@@ -56,6 +51,14 @@ page {
   float: right;
   font-size: 26rpx;
   color: #F32939;
+}
+
+.product-list {
+  overflow: hidden;
+}
+
+.product-list.hide {
+  max-height: 500rpx;
 }
 
 .product {
@@ -140,6 +143,22 @@ page {
 .btn-group button.active {
   color: #F32939;
   border-color: #F32939;
+}
+
+.spread {
+  float: right;
+  margin-left: 20rpx;
+}
+
+.spread text {
+  font-size: 26rpx;
+  color: #f32939;
+}
+
+.spread image {
+  margin-right: 8rpx;
+  width: 24rpx;
+  height: 20rpx;
 }
 
 .not-order {

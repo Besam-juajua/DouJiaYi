@@ -5,6 +5,7 @@ const format = require("../../utils/util.js");
 Page({
   data: {
     imgUrl: app.imgUrl,
+    all: false, // 是否展开全部
     order: {
       storeName: "梅江碧桂园加盟店包点1号店",
       productList: [{
@@ -46,6 +47,12 @@ Page({
           order: info
         })
       }
+    })
+  },
+  // 是否查看全部
+  lookAll() {
+    this.setData({
+      all: !this.data.all
     })
   }
 })

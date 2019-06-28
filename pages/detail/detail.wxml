@@ -1,6 +1,6 @@
 <view class='order'>
   <text class='store-name'>{{order.storeName}}</text>
-  <view class='product-list'>
+  <view class="product-list {{ all ? '' : 'hide'}}">
     <view class='product-item' wx:for="{{order.goods}}" wx:key="{{order.title}}">
       <image src='{{imgUrl + item.gid.thumb}}'></image>
       <view class='profile'>
@@ -17,6 +17,11 @@
     <text>数量：{{order.count}}个</text>
     <text>￥{{order.price}}</text>
     <text>合计：</text>
+  </view>
+  <view class='spread' bindtap='lookAll'>
+    <image src="/images/fold.png" wx:if="{{all}}"></image>
+    <image src="/images/spread.png" wx:else></image>
+    <text>{{all? "收起" : "展开全部"}}</text>
   </view>
 </view>
 

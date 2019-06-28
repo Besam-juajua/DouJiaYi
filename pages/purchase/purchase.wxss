@@ -43,6 +43,14 @@ page {
   position: relative;
 }
 
+.right-go {
+  position: absolute;
+  top: 30rpx;
+  right: 40rpx;
+  width: 18rpx;
+  height: 30rpx;
+}
+
 .product-list .title-img {
   width: 200rpx;
   height: 200rpx;
@@ -101,13 +109,16 @@ page {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 46rpx;
-  height: 40rpx;
+  width: 66rpx;
+  height: 60rpx;
 }
 
-.count text {
+.count input {
+  display: block;
+  width: 40rpx;
   padding: 0 24rpx;
-  line-height: 40rpx;
+  line-height: 60rpx;
+  text-align: center;
   font-size: 26rpx;
   color: #222222;
   border-left: 2rpx solid #D8D8D8;

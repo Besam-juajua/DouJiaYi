@@ -5,8 +5,8 @@ const win = require("../../utils/win.js");
 function getList(self, isReload = false) {
   let page = isReload ? 0 : self.data.page;
   let list = isReload ? [] : self.data.orderList;
-  let count = isReload? 0 : self.data.totalCount;
-  let price = isReload? 0 : self.data.totalPrice;
+  let count = isReload ? 0 : self.data.totalCount;
+  let price = isReload ? 0 : self.data.totalPrice;
   wx.request({
     url: app.reqUrl + "mini.cart_list",
     header: {
@@ -49,9 +49,10 @@ function getList(self, isReload = false) {
 Page({
   data: {
     imgUrl: app.imgUrl,
+    tempSelect: "", // 当前订单选择的地址，非本地存储的地址
     addrId: "",
     address: {
-      username: "",
+      name: "",
       phone: "",
       address: "请选择收获地址",
       scopeAddress: "",
@@ -62,27 +63,12 @@ Page({
     orderList: []
   },
   onLoad() {
+    if (app.notLogin()) return;
     getList(this, true);
   },
   onShow() {
-    let default_address = wx.getStorageSync("default_address");
-    if(default_address) {
-      this.setData({
-        address: JSON.parse(default_address),
-        addrId: JSON.parse(default_address).id
-      })
-    } else {
-      this.setData({
-        address: {
-          username: "",
-          phone: "",
-          address: "请选择收获地址",
-          scopeAddress: "",
-        },
-        addrId: ""
-      })
-    }
-    if(app.globalData.refreshOrder) {
+    // 是否需要刷新列表
+    if (app.globalData.refreshOrder) {
       getList(this, true);
       wx.pageScrollTo({
         scrollTop: 0,
@@ -90,6 +76,30 @@ Page({
       })
       app.globalData.refreshOrder = false;
     }
+    // 是否选择了非默认地址
+    if (this.data.tempSelect) {
+      this.setData({
+        address: this.data.tempSelect
+      })
+      return;
+    }
+    let default_address = wx.getStorageSync("default_address");
+    if (default_address) {
+      this.setData({
+        address: JSON.parse(default_address),
+        addrId: JSON.parse(default_address).id
+      })
+      return;
+    }
+    this.setData({
+      address: {
+        name: "",
+        phone: "",
+        address: "请选择收获地址",
+        scopeAddress: "",
+      },
+      addrId: ""
+    })
   },
   onPullDownRefresh() {
     getList(this, true);
@@ -98,7 +108,7 @@ Page({
     let data = e.currentTarget.dataset
     let index = data.index;
     let item = "orderList[" + index + "].count"
-    if(this.data.orderList[index].count <= 0) return;
+    if (this.data.orderList[index].count <= 0) return;
     this.setData({
       [item]: this.data.orderList[index].count - 1,
       totalCount: this.data.totalCount - 1,
@@ -110,13 +120,23 @@ Page({
     let data = e.currentTarget.dataset
     let index = data.index;
     let item = "orderList[" + index + "].count"
-    if(this.data.orderList[index].count >= 99) return;
+    if (this.data.orderList[index].count >= 99) return;
     this.setData({
       [item]: this.data.orderList[index].count + 1,
       totalCount: this.data.totalCount + 1,
       totalPrice: this.data.totalPrice + data.price
     })
     this.alterCount(data.id, index);
+  },
+  // 输入框input失去焦点
+  stopInput(e) {
+    let data = e.currentTarget.dataset;
+    let item = "orderList[" + data.index + "].count"
+    let count = e.detail.value || 0
+    this.setData({
+      [item]: count
+    })
+    this.alterCount(data.id, data.index)
   },
   alterCount(id, index) {
     wx.request({
@@ -165,7 +185,7 @@ Page({
         addrId: this.data.addrId,
       },
       success: (res) => {
-        if(res.data.errcode != 0) {
+        if (res.data.errcode != 0) {
           win.nlog(res.data.description);
           return;
         }
@@ -182,7 +202,7 @@ Page({
   // 编辑地址
   goAdress() {
     wx.navigateTo({
-      url: '/pages/adress/adress',
+      url: '/pages/adress/adress?origin=order',
     })
   }
 })

@@ -16,17 +16,25 @@
       <text>订单号：{{item.uid}}</text>
       <text>{{currentNav==0? "待接单" : currentNav==1? "已接单" : "已取消"}}</text>
     </view>
-    <view class='product' wx:for="{{item.goods}}" wx:key="{{item.gid.title}}">
-      <image src='{{imgUrl + item.gid.thumb}}'></image>
-      <view class='product-specs'>
-        <text>{{item.gid.title}}</text>
-        <text>规格：{{item.gspec.name}}</text>
-        <text>x{{item.count}}</text>
+    <view class="product-list {{item.all ? '': 'hide'}}">
+      <view class='product' wx:for="{{item.goods}}" wx:key="{{item.gid.title}}">
+        <image src='{{imgUrl + item.gid.thumb}}'></image>
+        <view class='product-specs'>
+          <text>{{item.gid.title}}</text>
+          <text>规格：{{item.gspec.name}}</text>
+          <text>x{{item.count}}</text>
+        </view>
+        <text class='money'>￥{{item.gspec.price * item.count}}</text>
       </view>
-      <text class='money'>￥{{item.gspec.price * item.count}}</text>
     </view>
+
     <view class='btn-group' catchtap='goRemark'>
       <text>下单时间：{{item.createDate}}</text>
+      <view class='spread' data-index='{{index}}' bindtap='lookAll'>
+        <image src="/images/fold.png" wx:if="{{item.all}}"></image>
+        <image src="/images/spread.png" wx:else></image>
+        <text>{{item.all? "收起" : "展开全部"}}</text>
+      </view>
       <button class='active' wx:if="{{currentNav==1}}">确认收货</button>
       <button wx:if="{{currentNav==0}}" data-index="{{index}}" data-id="{{item._id}}" bindtap='cancelOrder'>取消订单</button>
     </view>

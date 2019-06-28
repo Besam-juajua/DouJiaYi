@@ -58,6 +58,14 @@
   position: relative;
 }
 
+.right-go {
+  position: absolute;
+  top: 30rpx;
+  right: 40rpx;
+  width: 18rpx;
+  height: 30rpx;
+}
+
 .order-item .title-img {
   width: 200rpx;
   height: 200rpx;
@@ -65,6 +73,7 @@
 }
 
 .order-item .order-specs {
+  flex: 1;
   padding: 20rpx;
   box-sizing: border-box;
   max-width: 500rpx;
@@ -103,7 +112,7 @@
   display: flex;
   align-items: center;
   position: absolute;
-  right: 0;
+  right: 20rpx;
   bottom: 30rpx;
   box-sizing: border-box;
   border: 2rpx solid #D8D8D8;
@@ -115,13 +124,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 46rpx;
-  height: 40rpx;
+  width: 66rpx;
+  height: 60rpx;
 }
 
-.count text {
+.count input {
+  display: block;
+  width: 40rpx;
   padding: 0 24rpx;
-  line-height: 40rpx;
+  line-height: 60rpx;
+  text-align: center;
   font-size: 26rpx;
   color: #222222;
   border-left: 2rpx solid #D8D8D8;
@@ -136,6 +148,7 @@
   line-height: 78rpx;
   font-size: 26rpx;
   background: white;
+  z-index: 99;
 }
 
 .amount .total {

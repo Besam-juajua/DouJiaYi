@@ -2,10 +2,11 @@
   <text wx:for="{{productList}}" wx:key="{{item.label._id}}" class="{{currentNav==index ? 'active' : ''}}" data-index="{{index}}" data-id="{{item.label._id}}">{{item.label.name}}</text>
 </view>
 <scroll-view class='right-content' scroll-y="true">
-  <view class='product-list' wx:for="{{productList[currentNav].value}}" wx:key="{{item._id}}" data-stockindex="{{index}}" data-id='{{item.gid._id}}' data-spec="{{item.gspec.name}}" data-price="{{item.gspec.price}}" bindtap='goProductDetail'>
+  <view class='product-list' wx:for="{{productList[currentNav].value}}" wx:key="{{item._id}}">
+    <image src='/images/right_gray.png' class='right-go'></image>
     <image src='{{imgUrl + item.gid.logo}}' class='title-img'></image>
     <view class='product-specs'>
-      <text>{{item.gid.title}}</text>
+      <text data-stockindex="{{index}}" data-id='{{item.gid._id}}' data-spec="{{item.gspec.name}}" data-price="{{item.gspec.price}}" bindtap='goProductDetail'>{{item.gid.title}}</text>
       <text>规格：{{item.gspec.name}}</text>
       <text>¥ {{item.gspec.price}}</text>
     </view>
@@ -13,7 +14,7 @@
       <view class='alter' data-index="{{index}}" catchtap='subCount'>
         <image src='/images/sub.png' style='width:24rpx; height: 2rpx; margin: 0 10rpx;'></image>
       </view>
-      <text>{{item.count}}</text>
+      <input value='{{item.count}}' data-index="{{index}}" bindblur='stopInput' bindinput='setCount'></input>
       <view class='alter' data-index="{{index}}" catchtap='addCount'>
         <image src='/images/add.png' style=' width:24rpx; height: 24rpx; margin: 0 10rpx;'></image>
       </view>

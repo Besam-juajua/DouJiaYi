@@ -30,6 +30,7 @@ function getList(self, isReload = false) {
       list = res.data.order_list;
       list.forEach((val, index) => {
         list[index].createDate = format.formatTime(new Date(val.createDate));
+        list[index].all = false;
       })
       self.setData({
         page: page + 1,
@@ -116,6 +117,14 @@ Page({
     if(this.data.currentNav != 2) return;
     wx.navigateTo({
       url: '/pages/remark/remark',
+    })
+  },
+  // 是否查看全部
+  lookAll(e) {
+    let index = e.currentTarget.dataset.index;
+    let order = "orderList[" + index + "].all"
+    this.setData({
+      [order]: !this.data.orderList[index].all
     })
   }
 })

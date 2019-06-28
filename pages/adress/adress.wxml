@@ -1,6 +1,6 @@
 <view class="adress-list">
   <view class='adress-item' wx:for="{{addressList}}" wx:key="{{item.name}}">
-    <view class='profile'>
+    <view class='profile' data-index="{{index}}" bindtap='select'>
       <view class='name-phone'>
         <text>{{item.username}}</text>
         <text>{{item.mobile}}</text>

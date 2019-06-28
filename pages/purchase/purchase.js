@@ -75,6 +75,12 @@ Page({
 
     })
   },
+  setCount(e) {
+    let item = "productList[" + this.data.currentNav + "].value[" + e.currentTarget.dataset.index + "].count"
+    this.setData({
+      [item]: e.detail.value,
+    })
+  },
   subCount(e) {
     if (this.data.productList[this.data.currentNav].value[e.currentTarget.dataset.index].count <= 0) return;
     let item = "productList[" + this.data.currentNav + "].value[" + e.currentTarget.dataset.index + "].count"
@@ -95,6 +101,14 @@ Page({
       [item]: count
     })
   },
+  // 输入框input失去焦点
+  stopInput(e) {
+    if(e.detail.value) return;
+    let item = "productList[" + this.data.currentNav + "].value[" + e.currentTarget.dataset.index + "].count"
+    this.setData({
+      [item]: 0
+    })
+  },
   goProductDetail(e) {
     let data = e.currentTarget.dataset;
     wx.navigateTo({
@@ -113,6 +127,10 @@ Page({
             count: productList[i].value[j].count
           }
           allBuy.push(product);
+          let alterProduct = "productList[" + i + "].value[" + j + "].count"
+          this.setData({
+            [alterProduct]: 0
+          })
         }
       }
     }
@@ -126,13 +144,10 @@ Page({
         stocks: JSON.stringify(allBuy)
       },
       success: (res) => {
-        console.log("111111111111111")
-        console.log(res)
         if (res.data.errcode != 0) {
           win.nlog(res.data.description);
           return;
         }
-        console.log("222222222")
         win.toast("下单成功!", 500);
         app.globalData.refreshOrder = true;
         setTimeout(() => {

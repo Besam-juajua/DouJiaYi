@@ -40,7 +40,7 @@
       },
       {
         "pagePath": "pages/purchase/purchase",
-        "text": "采购表",
+        "text": "我的采购",
         "iconPath": "./images/purchase.png",
         "selectedIconPath": "./images/purchase_select.png"
       },

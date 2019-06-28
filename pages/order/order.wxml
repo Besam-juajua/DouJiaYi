@@ -11,10 +11,11 @@
   </view>
 </view>
 <view class='order-list'>
-  <view class='order-item' wx:for="{{orderList}}" wx:key="{{item._id}}" data-index="{{index}}" data-id="{{item._id}}" data-label="{{item.label}}" bindtap='goDetail'>
+  <view class='order-item' wx:for="{{orderList}}" wx:key="{{item._id}}">
+  <image src='/images/right_gray.png' class='right-go'></image>
     <image src='{{imgUrl + item.gid.thumb}}' class='title-img'></image>
     <view class='order-specs'>
-      <text>{{item.gid.title}}</text>
+      <text data-index="{{index}}" data-id="{{item._id}}" data-label="{{item.label}}" bindtap='goDetail'>{{item.gid.title}}</text>
       <text>规格：{{item.gspec.name}}</text>
       <text>¥ {{item.gspec.price}}</text>
     </view>
@@ -22,7 +23,7 @@
       <view class='alter' catchtap='subCount' data-index="{{index}}" data-id="{{item._id}}" data-price="{{item.gspec.price}}">
         <image src='/images/sub.png' style='width:24rpx; height: 2rpx; margin: 0 10rpx;'></image>
       </view>
-      <text>{{item.count}}</text>
+      <input value='{{item.count}}' data-index="{{index}}" data-id="{{item._id}}" bindblur='stopInput'></input>
       <view class='alter' catchtap='addCount' data-index="{{index}}" data-id="{{item._id}}" data-price="{{item.gspec.price}}">
         <image src='/images/add.png' style=' width:24rpx; height: 24rpx; margin: 0 10rpx;'></image>
       </view>

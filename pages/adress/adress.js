@@ -4,10 +4,14 @@ const win = require("../../utils/win.js");
 Page({
   data: {
     addressList: [],
+    origin: "",
   },
   onLoad(options) {
     if(options.origin == "order") {
-      win.nlog("请设置默认收货地址~");
+      // win.nlog("请设置默认收货地址~");
+      this.setData({
+        origin: "order"
+      })
     }
     win.loading("正在加载...");
     this.getList();
@@ -44,5 +48,23 @@ Page({
   // 刷新列表
   refreshAddress() {
     this.getList();
+  },
+  // 选择收货地址
+  select(e) {
+    if(!this.data.origin) return;
+    let index = e.currentTarget.dataset.index;
+    let select = this.data.addressList[index];
+    let pages = getCurrentPages();
+    let pre = pages[pages.length - 2];
+    pre.setData({
+      addrId: select._id,
+      tempSelect: {
+        name: select.username,
+        phone: select.mobile,
+        address: select.address,
+        scopeAddress: select.detail,
+      }
+    })
+    wx.navigateBack()
   }
 })

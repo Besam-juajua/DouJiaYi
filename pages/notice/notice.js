@@ -15,7 +15,6 @@ function getList(self, isReload = false) {
       page: page + 1
     },
     success(res) {
-      console.log("公告>>>", res)
       if (res.data.errcode != 0) {
         win.nlog(res.description);
         return;
@@ -25,7 +24,6 @@ function getList(self, isReload = false) {
       msgs = msgs.map(val => {
         val.createDate = format.formatTime(new Date(val.createDate));
         val.all = false;
-        console.log(val.createDate)
         return val;
       })
       list = list.concat(msgs);
@@ -61,10 +59,8 @@ Page({
   lookAll(e) {
     let index = e.currentTarget.dataset.index;
     let notice = "noticeList[" + index + "].all"
-    console.log([notice])
     this.setData({
       [notice]: !this.data.noticeList[index].all
     })
-    console.log(this.data.noticeList)
   }
 })

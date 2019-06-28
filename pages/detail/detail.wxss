@@ -18,6 +18,11 @@ page {
 
 .product-list {
   padding: 0 20rpx;
+  overflow: hidden;
+}
+
+.product-list.hide {
+  max-height: 600rpx;
 }
 
 .product-item {
@@ -93,6 +98,23 @@ page {
 .calc-money text:nth-of-type(3) {
   float: right;
   color: #222222;
+}
+
+.spread {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60rpx;
+  margin-left: 20rpx;
+  border-top: 1rpx solid #F5F5F5;
+  font-size: 26rpx;
+  color: #f32939;
+}
+
+.spread image {
+  margin-right: 8rpx;
+  width: 24rpx;
+  height: 20rpx;
 }
 
  /*订单信息 */
