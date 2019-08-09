@@ -12,7 +12,7 @@ Page({
     info: {},
     showBox: false,
     price: 0,
-    count: 0,
+    count: 1,
     specsName: ""
   },
   onLoad(options) {
@@ -70,6 +70,7 @@ Page({
       },
       success: (res) => {
         if (res.data.errcode != 0) return;
+        console.log(res)
         let goods = res.data.goods_info
         // 假如是从采购表进来该页面的，就将规格变为采购表的规格
         if (this.data.origin == "purchase") {
@@ -85,7 +86,7 @@ Page({
     })
   },
   subCount() {
-    if (this.data.count <= 0) return;
+    if (this.data.count <= 1) return;
     this.setData({
       count: this.data.count - 1
     })
@@ -127,11 +128,19 @@ Page({
   },
   // 立即添加
   addGoods() {
-    // 采购表进来的走这里
-    if(this.data.origin == "purchase") {
-      this.postPurchase();
+    if(!this.data.specsName) {
+      wx.showToast({
+        title: '请选择商品规格',
+        icon: "none",
+        duration: 1000
+      })
       return;
     }
+    // 采购表进来的走这里, (由于改为onShow时请求，因此暂时注释该前端功能，以免后续如有变)
+    // if(this.data.origin == "purchase") {
+    //   this.postPurchase();
+    //   return;
+    // }
     // 下单表进来的走这里
     if(this.data.origin == "order") {
       this.postOrder();
@@ -141,12 +150,12 @@ Page({
     this.postGoods();
   },
   // 将添加的商品数量带至purchase页
-  postPurchase() {
-    let pages = getCurrentPages();
-    let prePage = pages[pages.length - 2];
-    prePage.addProduct(this.data.labelIndex, this.data.stockIndex, this.data.count);
-    wx.navigateBack();
-  },
+  // postPurchase() {
+  //   let pages = getCurrentPages();
+  //   let prePage = pages[pages.length - 2];
+  //   prePage.addProduct(this.data.labelIndex, this.data.stockIndex, this.data.count);
+  //   wx.navigateBack();
+  // },
   // 将添加的商品数量带至order页
   postOrder() {
     let pages = getCurrentPages();
@@ -186,6 +195,12 @@ Page({
       }
     })
   },
+  // 总价
+  // total() {
+  //   let a = 100;
+  //   console.log("a > ", a.toFixed(2));
+  //   return this.data.price * this.data.count;
+  // },
   // 分享
   onShareAppMessage(res) {
     return {

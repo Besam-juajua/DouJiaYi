@@ -29,7 +29,7 @@ function getList(self, isReload = false) {
       }
       list = res.data.order_list;
       list.forEach((val, index) => {
-        list[index].createDate = format.formatTime(new Date(val.createDate));
+        list[index].date = format.formatTime(new Date(val.createDate));
         list[index].all = false;
       })
       self.setData({
@@ -111,12 +111,6 @@ Page({
   goProduct(e) {
     wx.navigateTo({
       url: '/pages/detail/detail?id=' + e.currentTarget.dataset.id
-    })
-  },
-  goRemark() {
-    if(this.data.currentNav != 2) return;
-    wx.navigateTo({
-      url: '/pages/remark/remark',
     })
   },
   // 是否查看全部

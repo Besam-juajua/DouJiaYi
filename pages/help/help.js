@@ -1,5 +1,6 @@
+let wxParse = require("../../wxParse/wxParse.js");
+let win = require("../../utils/win.js");
 const app = getApp();
-const win = require("../../utils/win.js");
 
 Page({
   data: {
@@ -27,13 +28,13 @@ Page({
         "x-access-token": app.globalData.token
       },
       success: (res) => {
+        console.log("help res >> ", res);
         if (res.data.errcode != 0) {
           win.nlog("加载失败~");
           return;
         }
-        this.setData({
-
-        })
+        // wxParse.wxParse('help', 'html', '<p><img src="/uploads/2019-08-09/cc3be50afe5c2b23596237b70f2a017c.png" alt="爱心.png"><br></p>', this, 5);
+        wxParse.wxParse('help', 'html', res.data.content || '', this, 5);
       }
     })
   }

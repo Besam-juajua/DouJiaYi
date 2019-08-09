@@ -20,7 +20,7 @@
     </view>
   </view>
   <!-- 产品册 -->
-  <view class='product-show'>
+  <view class='product-show' wx:if="{{goods.length}}">
     <view class='top-title'>
       <view class='text-title'>
         <text>产品册</text>
@@ -28,17 +28,17 @@
       </view>
       <image src='/images/feature_title.png'></image>
     </view>
-    <view class="group group-one left" data-id="{{goods[0]._id}}" bindtap='goDetail'>
-      <image src='{{imgUrl + goods[0].logo}}'></image>
+    <view class="group group-one left" data-id="{{goods[0]._id}}" wx:if="{{goods[0]}}" bindtap='goDetail'>
+      <image src='{{imgUrl + goods[0].logo}}' mode='aspectFill'></image>
       <text>{{goods[0].title}}</text>
     </view>
     <view class="group group-two right">
-      <view class='min-img' data-id="{{goods[1]._id}}" bindtap='goDetail'>
-        <image src='{{imgUrl + goods[1].logo}}'></image>
+      <view class='min-img' data-id="{{goods[1]._id}}" wx:if="{{goods[1]}}" bindtap='goDetail'>
+        <image src='{{imgUrl + goods[1].logo}}' mode='aspectFill'></image>
         <text>{{goods[1].title}}</text>
       </view>
-      <view class='min-img' data-id="{{goods[2]._id}}" bindtap='goDetail'>
-        <image src='{{imgUrl + goods[2].logo}}'></image>
+      <view class='min-img' data-id="{{goods[2]._id}}" wx:if="{{goods[2]}}" bindtap='goDetail'>
+        <image src='{{imgUrl + goods[2].logo}}' mode='aspectFill' ></image>
         <text>{{goods[2].title}}</text>
       </view>
     </view>
@@ -49,7 +49,7 @@
       <text>关于豆加壹</text>
       <text>About us</text>
     </view>
-    <image src='{{imgUrl + about}}' bindtap='goAbout'></image>
+    <image src='{{imgUrl + about}}' bindtap='goAbout' wx:if="{{about}}"></image>
   </view>
   <!-- 客户必读 -->
   <view class='need-read'>

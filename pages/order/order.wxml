@@ -17,13 +17,13 @@
     <view class='order-specs'>
       <text data-index="{{index}}" data-id="{{item._id}}" data-label="{{item.label}}" bindtap='goDetail'>{{item.gid.title}}</text>
       <text>规格：{{item.gspec.name}}</text>
-      <text>¥ {{item.gspec.price}}</text>
+      <text>¥ {{filter.toFixed(item.gspec.price)}}</text>
     </view>
     <view class='count'>
       <view class='alter' catchtap='subCount' data-index="{{index}}" data-id="{{item._id}}" data-price="{{item.gspec.price}}">
         <image src='/images/sub.png' style='width:24rpx; height: 2rpx; margin: 0 10rpx;'></image>
       </view>
-      <input value='{{item.count}}' data-index="{{index}}" data-id="{{item._id}}" bindblur='stopInput'></input>
+      <input type='number' value='{{item.count}}' maxlength='3' data-index="{{index}}" data-id="{{item._id}}" bindblur='stopInput'></input>
       <view class='alter' catchtap='addCount' data-index="{{index}}" data-id="{{item._id}}" data-price="{{item.gspec.price}}">
         <image src='/images/add.png' style=' width:24rpx; height: 24rpx; margin: 0 10rpx;'></image>
       </view>
@@ -33,7 +33,9 @@
 
 <view class='amount'>
   <text class='total'>合计：</text>
-  <text class='money'>￥{{totalPrice}}</text>
+  <text class='money'>￥{{filter.toFixed(totalPrice)}}</text>
   <text class='pay' bindtap='toPay'>结算</text>
   <text class='pay-count'>数量：{{totalCount}}个</text>
 </view>
+
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>

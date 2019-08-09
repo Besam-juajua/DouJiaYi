@@ -1,6 +1,13 @@
+
+<view style='margin-top: 20rpx; background: white;'>
+  <template is="wxParse" data="{{wxParseData:help.nodes}}" />
+</view>
+<import src="../../wxParse/wxParse.wxml" />
+
+<!-- 
 <view class="help-list">
   <view class='help-item' wx:for="{{helpList}}" wx:key="{{item.title}}">
     <text>{{item.title}}</text>
     <text>{{item.content}}</text>
   </view>
-</view>
+</view> -->

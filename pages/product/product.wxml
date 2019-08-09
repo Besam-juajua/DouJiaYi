@@ -1,6 +1,32 @@
-<view class='product-list'>
-  <view class='img-group' wx:for="{{productList}}" wx:key="{{item._id}}" data-id="{{item._id}}" bindtap='goDetail'>
-    <image src="{{imgUrl + item.logo}}"></image>
-    <text>{{item.title}}</text>
-  </view>
+<view class='left-nav' bindtouchstart='switchNav'>
+  <text wx:for="{{productList}}" wx:key="{{item.label._id}}" class="{{currentNav==index ? 'active' : ''}}" data-index="{{index}}" data-id="{{item.label._id}}">{{item.label.name}}</text>
 </view>
+<scroll-view class='right-content' scroll-y="true">
+  <view class='product-list' wx:for="{{productList[currentNav].value}}" wx:key="{{item._id}}">
+    <image src='/images/right_gray.png' class='right-go'></image>
+    <image src='{{imgUrl + item.thumb}}' class='title-img'></image>
+    <view class='product-specs'>
+      <text data-stockindex="{{index}}" data-id='{{item._id}}' data-spec="{{item.specs[0].name}}" data-price="{{item.specs[0].price}}" bindtap='goProductDetail'>{{item.title}}</text>
+      <text>规格：{{item.specs[0].name}}</text>
+      <text>¥ {{filter.toFixed(item.specs[0].price)}}</text>
+    </view>
+    <!-- <view class='count'>
+      <view class='alter' data-index="{{index}}" catchtap='subCount'>
+        <image src='/images/sub.png' style='width:24rpx; height: 2rpx; margin: 0 10rpx;'></image>
+      </view>
+      <input value='{{item.count}}' data-index="{{index}}" bindblur='stopInput' bindinput='setCount'></input>
+      <view class='alter' data-index="{{index}}" catchtap='addCount'>
+        <image src='/images/add.png' style=' width:24rpx; height: 24rpx; margin: 0 10rpx;'></image>
+      </view>
+    </view> -->
+  </view>
+</scroll-view>
+<!-- 
+<view class='amount'>
+  <text class='total'>合计：</text>
+  <text class='money'>￥12.60</text>
+  <text class='pay' bindtap='goSetOrder'>立即下单</text>
+  <text class='pay-count'>数量：8个</text>
+</view> -->
+
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>

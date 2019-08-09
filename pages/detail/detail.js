@@ -42,7 +42,7 @@ Page({
           return;
         }
         let info = res.data.orderInfo;
-        info.createDate = format.formatTime(new Date(info.createDate));
+        info.date = format.formatTime(new Date(info.createDate));
         this.setData({
           order: info
         })

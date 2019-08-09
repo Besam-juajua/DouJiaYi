@@ -5,7 +5,7 @@ Page({
   data: {
     imgUrl: app.imgUrl,
     advertises: [],
-    goods: [{logo: ""},{logo: ""},{logo: ""}],
+    goods: [],
     about: "",
   },
   onLoad() {

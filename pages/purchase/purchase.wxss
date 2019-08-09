@@ -115,8 +115,7 @@ page {
 
 .count input {
   display: block;
-  width: 40rpx;
-  padding: 0 24rpx;
+  width: 88rpx;
   line-height: 60rpx;
   text-align: center;
   font-size: 26rpx;

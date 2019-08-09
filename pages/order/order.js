@@ -108,7 +108,7 @@ Page({
     let data = e.currentTarget.dataset
     let index = data.index;
     let item = "orderList[" + index + "].count"
-    if (this.data.orderList[index].count <= 0) return;
+    if (this.data.orderList[index].count <= 1) return;
     this.setData({
       [item]: this.data.orderList[index].count - 1,
       totalCount: this.data.totalCount - 1,
@@ -132,7 +132,8 @@ Page({
   stopInput(e) {
     let data = e.currentTarget.dataset;
     let item = "orderList[" + data.index + "].count"
-    let count = e.detail.value || 0
+    let count = e.detail.value || 1;
+    if (isNaN(count) || count < 1) count = 1;
     this.setData({
       [item]: count
     })
@@ -170,7 +171,7 @@ Page({
     this.alterCount(id, index);
   },
   toPay(e) {
-    if (!wx.getStorageSync("default_address")) {
+    if (!this.data.addrId) {
       wx.navigateTo({
         url: '/pages/adress/adress?origin=order',
       })

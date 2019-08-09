@@ -58,5 +58,10 @@
       }
     ]
   },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "获取用户位置信息"
+    }
+  },
   "sitemapLocation": "sitemap.json"
 }

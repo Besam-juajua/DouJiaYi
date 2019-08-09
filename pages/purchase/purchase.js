@@ -7,22 +7,25 @@ Page({
     page: 0,
     currentNav: 0,
     productList: [],
+    totalPrice: 0,
+    totalCount: 0, 
   },
-  onLoad() {
+  onShow() {
     if (app.notLogin()) return;
     this.getLabels();
   },
   // 获取标签
   getLabels() {
     wx.request({
-      url: app.reqUrl + 'mini.labels',
+      url: app.reqUrl + 'mini.stock_labels',
       method: "GET",
       header: {
         'x-access-token': app.globalData.token
       },
       success: (res) => {
+        console.log("purchase res > ", res)
         if (res.data.errcode != 0) {
-          win.nlog(res.data.description);
+          win.nlog(res.data && res.data.description || "请求出错");
           return;
         }
         let products = [];
@@ -50,9 +53,9 @@ Page({
     })
     this.getList(dataset.id, dataset.index);
   },
-  // 根据label获取列表
+  // 根据label获取列表 //////// 接口报错了
   getList(labelId, index) {
-    if (this.data.productList[index].value.length != 0) return;
+    if (this.data.productList[index].value && this.data.productList[index].value.length != 0) return;
     wx.request({
       url: app.reqUrl + 'mini.stock_bylabel',
       method: "GET",
@@ -60,13 +63,14 @@ Page({
         'x-access-token': app.globalData.token
       },
       data: {
-        labelId: labelId
+        label: labelId
       },
       success: (res) => {
         if (res.data.errcode != 0) {
-          win.nlog(res.data.description);
+          win.nlog(res.data.description || "请求出错");
           return;
         }
+        
         let item = "productList[" + index + "].value"
         this.setData({
           [item]: res.data.stocks
@@ -76,34 +80,55 @@ Page({
     })
   },
   setCount(e) {
-    let item = "productList[" + this.data.currentNav + "].value[" + e.currentTarget.dataset.index + "].count"
+    let value = e.detail.value;
+    let data = e.currentTarget.dataset;
+    let good = this.data.productList[this.data.currentNav].value[data.index];
+    let item = "productList[" + this.data.currentNav + "].value[" + data.index + "].count";
+    let changeCount = e.detail.value - good.count;
+    let changePrice = changeCount * good.gspec.price;
     this.setData({
-      [item]: e.detail.value,
+      [item]: value,
+      totalCount: this.data.totalCount + changeCount,
+      totalPrice: +this.data.totalPrice + changePrice
     })
   },
   subCount(e) {
-    if (this.data.productList[this.data.currentNav].value[e.currentTarget.dataset.index].count <= 0) return;
+    let good = this.data.productList[this.data.currentNav].value[e.currentTarget.dataset.index];
+    if (good.count <= 0) return;
     let item = "productList[" + this.data.currentNav + "].value[" + e.currentTarget.dataset.index + "].count"
     this.setData({
-      [item]: this.data.productList[this.data.currentNav].value[e.currentTarget.dataset.index].count - 1
+      [item]: good.count - 1,
+      totalCount: this.data.totalCount - 1,
+      totalPrice: +this.data.totalPrice - good.gspec.price
     })
   },
   addCount(e) {
-    if (this.data.productList[this.data.currentNav].value[e.currentTarget.dataset.index].count >= 99) return;
+    let good = this.data.productList[this.data.currentNav].value[e.currentTarget.dataset.index];
+    if (good.count >= 99) return;
     let item = "productList[" + this.data.currentNav + "].value[" + e.currentTarget.dataset.index + "].count"
     this.setData({
-      [item]: this.data.productList[this.data.currentNav].value[e.currentTarget.dataset.index].count + 1
+      [item]: good.count + 1,
+      totalCount: this.data.totalCount + 1,
+      totalPrice: +this.data.totalPrice + good.gspec.price
     })
   },
-  addProduct(labelIndex, stockIndex, count) {
-    let item = "productList[" + labelIndex + "].value[" + stockIndex + "].count"
-    this.setData({
-      [item]: count
-    })
-  },
+  // 辅助productDetail页面，（由于改为onShow时访问labels,因此该功能暂时关闭）
+  // addProduct(labelIndex, stockIndex, count) {
+  //   let currentNav = this.data.currentNav;
+  //   let good = this.data.productList[labelIndex].value[stockIndex];
+  //   let changeCount = count - good.count;
+  //   let changePrice = changeCount * good.gspec.price
+  //   let item = "productList[" + labelIndex + "].value[" + stockIndex + "].count"
+  //   this.setData({
+  //     [item]: count,
+  //     totalCount: this.data.totalCount + changeCount,
+  //     totalPrice: this.data.totalPrice + changePrice
+  //   })
+  // },
   // 输入框input失去焦点
   stopInput(e) {
-    if(e.detail.value) return;
+    let value = e.detail.value;
+    if(value && !isNaN(value) && value >= 1) return;
     let item = "productList[" + this.data.currentNav + "].value[" + e.currentTarget.dataset.index + "].count"
     this.setData({
       [item]: 0
@@ -115,24 +140,36 @@ Page({
       url: '/pages/productDetail/productDetail?origin=purchase&labelIndex=' + this.data.currentNav + '&stockIndex=' + data.stockindex + "&spec=" + data.spec + '&price=' + data.price + '&id=' + data.id,
     })
   },
+  // 立即下单
   goSetOrder() {
     let allBuy = [];
     let productList = this.data.productList;
     for (let i = 0; i < productList.length; i++) {
       for (let j = 0; j < productList[i].value.length; j++) {
-        if (productList[i].value[j].count > 0) {
+        let item = productList[i].value[j];
+        if (item.count > 0) {
           let product = {
-            gid: productList[i].value[j].gid._id,
-            gspec: productList[i].value[j].gspec,
-            count: productList[i].value[j].count
+            gid: item.gid._id,
+            gspec: item.gspec,
+            count: item.count
           }
           allBuy.push(product);
           let alterProduct = "productList[" + i + "].value[" + j + "].count"
           this.setData({
-            [alterProduct]: 0
+            [alterProduct]: 0,
+            // totalPrice: this.data.totalPrice - item.gspec.price * item.count,
+            // totalCount: this.data.totalCount - item.count
           })
         }
       }
+    }
+    if(allBuy.length == 0) {
+      wx.showToast({
+        title: '请选择商品数量',
+        icon: "none",
+        duration: 1000
+      })
+      return;
     }
     wx.request({
       url: app.reqUrl + 'mini.stocks_add',
@@ -155,6 +192,10 @@ Page({
             url: '/pages/order/order',
           })
         }, 500);
+        this.setData({
+          totalCount: 0,
+          totalPrice: "0.00"
+        })
       }
     })
   }

@@ -13,7 +13,7 @@
 <view class='order-list' wx:for="{{orderList}}" wx:key="{{item.orderNum}}" data-id="{{item._id}}" bindtap='goProduct'>
   <view class='order-item'>
     <view class='order-num'>
-      <text>订单号：{{item.uid}}</text>
+      <text>订单号：{{item.createDate}}</text>
       <text>{{currentNav==0? "待接单" : currentNav==1? "已接单" : "已取消"}}</text>
     </view>
     <view class="product-list {{item.all ? '': 'hide'}}">
@@ -28,9 +28,9 @@
       </view>
     </view>
 
-    <view class='btn-group' catchtap='goRemark'>
-      <text>下单时间：{{item.createDate}}</text>
-      <view class='spread' data-index='{{index}}' bindtap='lookAll'>
+    <view class='btn-group'>
+      <text>下单时间：{{item.date}}</text>
+      <view class='spread' data-index='{{index}}' catchtap='lookAll'>
         <image src="/images/fold.png" wx:if="{{item.all}}"></image>
         <image src="/images/spread.png" wx:else></image>
         <text>{{item.all? "收起" : "展开全部"}}</text>

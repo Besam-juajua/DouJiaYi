@@ -8,13 +8,13 @@
     <view class='product-specs'>
       <text data-stockindex="{{index}}" data-id='{{item.gid._id}}' data-spec="{{item.gspec.name}}" data-price="{{item.gspec.price}}" bindtap='goProductDetail'>{{item.gid.title}}</text>
       <text>规格：{{item.gspec.name}}</text>
-      <text>¥ {{item.gspec.price}}</text>
+      <text>¥ {{filter.toFixed(item.gspec.price)}}</text>
     </view>
     <view class='count'>
       <view class='alter' data-index="{{index}}" catchtap='subCount'>
         <image src='/images/sub.png' style='width:24rpx; height: 2rpx; margin: 0 10rpx;'></image>
       </view>
-      <input value='{{item.count}}' data-index="{{index}}" bindblur='stopInput' bindinput='setCount'></input>
+      <input value='{{item.count}}' maxlength='3' data-index="{{index}}" bindblur='stopInput' bindinput='setCount'></input>
       <view class='alter' data-index="{{index}}" catchtap='addCount'>
         <image src='/images/add.png' style=' width:24rpx; height: 24rpx; margin: 0 10rpx;'></image>
       </view>
@@ -24,7 +24,9 @@
 
 <view class='amount'>
   <text class='total'>合计：</text>
-  <text class='money'>￥12.60</text>
+  <text class='money'>￥{{filter.toFixed(totalPrice)}}</text>
   <text class='pay' bindtap='goSetOrder'>立即下单</text>
-  <text class='pay-count'>数量：8个</text>
+  <text class='pay-count'>数量：{{totalCount}}个</text>
 </view>
+
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>

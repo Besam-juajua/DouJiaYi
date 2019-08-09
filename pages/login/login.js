@@ -3,19 +3,9 @@ const win = require("../../utils/win.js");
 
 Page({
   data: {
-    user: "17875306374",
-    pwd: "123456",
-    // origin: null, // 页面来源，即跳过来的页面
-    // callback: null, // origin的回调函数
+    user: "",
+    pwd: "",
   },
-  // onLoad(options) {
-  //   if(options.origin && origin.callback) {
-  //     this.setData({
-  //       origin: options.origin,
-  //       callback: options.callback
-  //     })
-  //   }
-  // },
   inputUser(e) {
     this.setData({
       user: e.detail.value

@@ -7,6 +7,7 @@ Page({
     userinfo: {},
   },
   onShow() {
+    if (app.notLogin()) return;
     this.setData({
       userinfo: app.globalData.userinfo
     })

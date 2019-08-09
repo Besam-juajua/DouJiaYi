@@ -27,10 +27,24 @@ page {
   color: #111111;
 }
 
+.enter-adress {
+  padding-right: 0;
+}
+
+.enter-adress .img-wrap {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  width: 100rpx;
+  height: 100%;
+  margin-left: 20rpx;
+}
+
 .enter-adress image {
+  float: right;
   width: 10rpx;
   height: 20rpx;
-  margin-left: 20rpx;
+  margin-right: 20rpx;
 }
 
 .enter-adress .input {
@@ -90,4 +104,45 @@ page {
   border: 1rpx solid #F32939;
   border-radius: 8rpx;
   box-sizing: border-box;
+}
+
+.auth-location {
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 50rpx;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, .42);
+}
+
+.auth-box {
+  border-radius: 10rpx;
+  background: white;
+}
+
+.auth-box text {
+  display: block;
+  padding: 0 30rpx;
+  margin: 46rpx 0;
+  line-height: 66rpx;
+  text-align: center;
+  font-size: 40rpx;
+  color: #333333;
+}
+
+.auth-box button {
+  width: 100%;
+  line-height: 100rpx;
+  border-radius: 0;
+  border-bottom-left-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+  background: #F32939;
+  letter-spacing: 6rpx;
+  font-size: 42rpx;
+  color: white;
 }

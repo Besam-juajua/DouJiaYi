@@ -1,8 +1,8 @@
 page {
-  background: #F5F5F5;
+  background: white;
 }
 
-.help-item {
+/* .help-item {
   padding: 30rpx 20rpx;
   margin-bottom: 2rpx;
   background: white;
@@ -12,7 +12,7 @@ page {
   display: block;
   font-size: 26rpx;
   color: #F32939;
-}
+} */
 
 .help-item text:nth-of-type(2) {
   display: block;

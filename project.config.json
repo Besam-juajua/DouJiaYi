@@ -15,7 +15,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.7.2",
 	"appid": "wxa0b5347b15724985",
-	"projectname": "temp",
+	"projectname": "DouZeakit",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
@@ -40,12 +40,33 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
 					"name": "myOrder",
 					"pathName": "pages/myOrder/myOrder",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "editAdress",
+					"pathName": "pages/editAdress/editAdress",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "help",
+					"pathName": "pages/help/help",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "order",
+					"pathName": "pages/order/order",
 					"scene": null
 				}
 			]

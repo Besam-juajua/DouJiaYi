@@ -29,6 +29,11 @@ Page({
       tempDefault: options.isDefault == "1"
     })
   },
+  enterAddress(e) {
+    this.setData({
+      address: e.detail.value
+    })
+  },
   getName(e) {
     this.setData({
       name: e.detail.value
@@ -44,7 +49,16 @@ Page({
       scopeAddress: e.detail.value
     })
   },
-  chooseAddress() {
+  onAuthLocation() {
+    wx.authorize({
+      scope: 'scope.userLocation',
+      success: (res) => {
+        this.chooseLocation();
+      }
+    })
+  },
+  // 打开地图选择
+  chooseLocation() {
     wx.chooseLocation({
       success: (res) => {
         this.setData({
